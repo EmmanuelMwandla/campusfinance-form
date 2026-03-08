@@ -1,18 +1,16 @@
 :root {
-  --purple: #5f2eea;
-  --purple-dark: #33165f;
-  --purple-soft: #7a46ff;
-  --pink: #d728a8;
-  --pink-dark: #b61f90;
+  --blue: #2f6ea5;
+  --green: #4e972e;
+  --dark: #16395a;
+  --text: #27425c;
+  --muted: #6e8599;
+  --bg: #eef3f7;
   --white: #ffffff;
-  --off-white: #f5f3f8;
-  --text: #2d174d;
-  --muted: #7b6d94;
-  --border: rgba(95, 46, 234, 0.12);
-  --shadow: 0 18px 45px rgba(72, 28, 122, 0.18);
-  --radius-xl: 30px;
-  --radius-lg: 22px;
-  --radius-md: 16px;
+  --line: #dbe5ed;
+  --shadow: 0 18px 40px rgba(24, 57, 90, 0.08);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
 }
 
 * {
@@ -23,297 +21,258 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
+  background: linear-gradient(180deg, #f4f7fa 0%, #edf3f8 100%);
   color: var(--text);
 }
 
-.landing-body {
+body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, rgba(215, 40, 168, 0.28), transparent 25%),
-    radial-gradient(circle at bottom right, rgba(95, 46, 234, 0.24), transparent 30%),
-    linear-gradient(160deg, var(--purple) 0%, var(--purple-soft) 55%, var(--pink) 100%);
 }
 
-.apply-body {
-  min-height: 100vh;
-  background:
-    linear-gradient(180deg, #f4f0fb 0%, #ffffff 100%);
-}
-
-.hero,
-.apply-wrap {
+.landing-page,
+.apply-page {
   width: min(100%, 460px);
   margin: 0 auto;
+  padding: 20px 18px 30px;
   min-height: 100vh;
-  padding: 18px 18px 28px;
 }
 
-.topbar {
+.site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 34px;
+  margin-bottom: 26px;
 }
 
-.topbar.light {
-  margin-bottom: 24px;
-}
-
-.brand {
-  display: flex;
+.logo-wrap {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: white;
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-.brand.dark {
-  color: var(--purple-dark);
-}
-
-.brand-main {
-  letter-spacing: -0.5px;
-}
-
-.brand-badge {
-  background: var(--pink);
-  color: white;
-  padding: 8px 10px;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 700;
-  min-width: 44px;
-  text-align: center;
-}
-
-.nav-btn,
-.back-link {
-  color: white;
   text-decoration: none;
-  font-size: 0.95rem;
-  opacity: 0.95;
 }
 
-.back-link {
-  color: var(--purple-dark);
+.logo {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+}
+
+.header-btn,
+.header-link {
+  text-decoration: none;
+  color: var(--blue);
   font-weight: 700;
+  font-size: 0.95rem;
 }
 
-.hero-content {
-  padding-top: 28px;
+.hero {
+  margin-top: 8px;
+}
+
+.hero-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid #edf2f6;
 }
 
 .eyebrow {
-  color: white;
-  opacity: 0.85;
-  font-size: 0.95rem;
-  margin: 0 0 10px;
-}
-
-.hero-content h1 {
-  color: white;
-  font-size: 2.6rem;
-  line-height: 1.05;
   margin: 0 0 12px;
-  letter-spacing: -1px;
-}
-
-.hero-text {
-  color: white;
-  opacity: 0.92;
-  font-size: 1.05rem;
-  margin-bottom: 26px;
-}
-
-.offer-card {
-  background: white;
-  border-radius: var(--radius-xl);
-  padding: 24px;
-  box-shadow: var(--shadow);
-  margin-bottom: 18px;
-}
-
-.offer-label {
-  color: var(--pink);
-  margin: 0 0 8px;
+  color: var(--green);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
   font-weight: 700;
 }
 
-.offer-card h2 {
+.hero-card h1 {
+  margin: 0 0 12px;
+  font-size: 2rem;
+  line-height: 1.08;
+  color: var(--dark);
+  letter-spacing: -0.03em;
+}
+
+.hero-text {
   margin: 0;
-  font-size: 2.1rem;
-  color: var(--pink);
-}
-
-.offer-sub {
-  margin: 10px 0 0;
   color: var(--muted);
-}
-
-.mini-offers {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 26px;
-}
-
-.mini-card {
-  background: rgba(255,255,255,0.98);
-  border-radius: 22px;
-  padding: 18px 12px;
-  text-align: center;
-  box-shadow: var(--shadow);
-}
-
-.mini-card strong {
-  display: block;
-  color: var(--purple);
-  font-size: 1.1rem;
-  margin-bottom: 6px;
-}
-
-.mini-card span {
-  color: var(--pink);
-  font-size: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .hero-actions {
-  margin-top: 10px;
+  margin-top: 22px;
 }
 
 .primary-btn {
   display: inline-block;
   width: 100%;
-  border: none;
-  background: var(--pink);
+  background: linear-gradient(135deg, var(--green), var(--blue));
   color: white;
   text-decoration: none;
-  text-align: center;
-  padding: 17px 18px;
-  border-radius: 18px;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 18px;
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 10px 22px rgba(215, 40, 168, 0.28);
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(47, 110, 165, 0.15);
 }
 
 .primary-btn:hover {
-  background: var(--pink-dark);
+  opacity: 0.95;
 }
 
 .small-btn {
   width: auto;
-  min-width: 130px;
+  min-width: 140px;
 }
 
-.apply-header {
-  margin-bottom: 20px;
+.offers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 18px;
 }
 
-.apply-header h1 {
+.offer-box {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 22px 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid #edf2f6;
+}
+
+.offer-type {
+  display: block;
+  color: var(--green);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.offer-box h2 {
   margin: 0 0 8px;
-  color: var(--purple-dark);
+  color: var(--blue);
   font-size: 2rem;
 }
 
-.apply-header p {
+.offer-box p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.apply-top {
+  margin-bottom: 18px;
+}
+
+.apply-top h1 {
+  margin: 0 0 8px;
+  color: var(--dark);
+  font-size: 1.9rem;
+}
+
+.apply-top p {
   margin: 0;
   color: var(--muted);
 }
 
-.loan-grid {
+.loan-options {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 20px 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 18px 0;
 }
 
-.loan-option {
-  border: none;
-  background: white;
-  border-radius: 22px;
-  padding: 18px 10px;
+.loan-card {
+  border: 2px solid transparent;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 20px 14px;
   box-shadow: var(--shadow);
+  text-align: left;
   cursor: pointer;
   transition: 0.2s ease;
-  border: 2px solid transparent;
 }
 
-.loan-option.active {
-  background: linear-gradient(180deg, #ffffff 0%, #fff0fb 100%);
-  border-color: var(--pink);
+.loan-card.active {
+  border-color: var(--green);
   transform: translateY(-2px);
 }
 
-.loan-option:hover {
+.loan-card:hover {
   transform: translateY(-2px);
 }
 
-.loan-amount {
+.loan-student {
   display: block;
-  color: var(--purple);
-  font-weight: 800;
-  font-size: 1.05rem;
+  color: var(--green);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.loan-card strong {
+  display: block;
+  color: var(--blue);
+  font-size: 1.8rem;
   margin-bottom: 6px;
 }
 
-.loan-meta {
-  display: block;
-  color: var(--pink);
-  font-size: 0.88rem;
+.loan-card small {
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
-.calc-card {
-  background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+.summary-card {
+  background: linear-gradient(135deg, var(--blue), var(--green));
   color: white;
   border-radius: var(--radius-lg);
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
-.calc-label {
+.summary-label {
   margin: 0 0 6px;
   opacity: 0.85;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
-.calc-card h2 {
+.summary-card h2 {
   margin: 0;
-  font-size: 1.9rem;
+  font-size: 1.3rem;
+  line-height: 1.2;
 }
 
-.calc-right {
+.summary-right {
   text-align: right;
 }
 
-.calc-right p {
+.summary-right p {
   margin: 0 0 5px;
   font-weight: 700;
-  font-size: 1rem;
 }
 
-.calc-right span {
-  font-size: 0.92rem;
+.summary-right span {
+  font-size: 0.9rem;
   opacity: 0.9;
 }
 
 .form-card {
-  background: white;
+  background: var(--white);
   border-radius: var(--radius-xl);
   padding: 22px;
   box-shadow: var(--shadow);
+  border: 1px solid #edf2f6;
 }
 
 .field {
-  margin-bottom: 16px;
+  margin-bottom: 15px;
 }
 
 .field.full {
@@ -322,42 +281,43 @@ body {
 
 label {
   display: block;
+  margin-bottom: 8px;
   font-size: 0.92rem;
   font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--purple-dark);
+  color: var(--dark);
 }
 
 input,
 textarea {
   width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 14px 15px;
+  border: 1px solid var(--line);
+  background: #f9fbfc;
+  border-radius: 14px;
+  padding: 14px 14px;
   font-size: 1rem;
   color: var(--text);
-  background: #fcfbff;
 }
 
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: var(--pink);
+  border-color: var(--blue);
+  background: #ffffff;
 }
 
-.checkbox-line {
+.checkbox-row {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.checkbox-line input {
+.checkbox-row input {
   width: 18px;
   height: 18px;
   margin: 0;
 }
 
-.checkbox-line label {
+.checkbox-row label {
   margin: 0;
   font-weight: 500;
   color: var(--muted);
@@ -365,16 +325,16 @@ textarea:focus {
 
 .full-btn {
   width: 100%;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
-.thank-you {
+.thank-you-modal {
   position: fixed;
   inset: 0;
-  background: rgba(44, 20, 74, 0.52);
+  background: rgba(17, 45, 72, 0.35);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 20px;
   z-index: 999;
 }
@@ -386,41 +346,48 @@ textarea:focus {
 .thank-you-card {
   width: min(100%, 360px);
   background: white;
-  border-radius: 26px;
-  padding: 28px 24px;
+  border-radius: 24px;
+  padding: 26px 22px;
   text-align: center;
-  box-shadow: var(--shadow);
+  box-shadow: 0 18px 40px rgba(17, 45, 72, 0.15);
+}
+
+.thank-logo {
+  width: 150px;
+  margin-bottom: 10px;
 }
 
 .thank-you-card h2 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  color: var(--purple-dark);
+  margin: 0 0 10px;
+  color: var(--dark);
 }
 
 .thank-you-card p {
-  margin-top: 0;
-  margin-bottom: 18px;
+  margin: 0 0 18px;
   color: var(--muted);
   line-height: 1.5;
 }
 
 @media (max-width: 420px) {
-  .hero-content h1 {
-    font-size: 2.2rem;
+  .logo {
+    width: 155px;
   }
 
-  .offer-card h2 {
+  .hero-card h1 {
     font-size: 1.8rem;
   }
 
-  .mini-offers,
-  .loan-grid {
-    gap: 10px;
+  .offer-box h2,
+  .loan-card strong {
+    font-size: 1.55rem;
   }
 
-  .mini-card,
-  .loan-option {
-    padding: 16px 8px;
+  .summary-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .summary-right {
+    text-align: left;
   }
 }
