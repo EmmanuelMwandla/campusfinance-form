@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply | CampusFinance</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="apply-body">
+  <div id="thankYouBox" class="thank-you hidden">
+    <div class="thank-you-card">
+      <h2>Application received</h2>
+      <p>Thank you. We have received your application.</p>
+      <a href="index.html" class="primary-btn small-btn">Back home</a>
+    </div>
+  </div>
 
+  <main class="apply-wrap">
+    <nav class="topbar light">
+      <a class="back-link" href="index.html">← Home</a>
+      <div class="brand dark">
+        <span class="brand-main">campusfinance</span>
+        <span class="brand-badge">24</span>
+      </div>
+    </nav>
+
+    <section class="apply-header">
+      <h1>Apply in minutes</h1>
+      <p>Select a loan option and complete the form.</p>
+    </section>
+
+    <section class="loan-grid">
+      <button class="loan-option active" type="button" data-loan="500" data-months="1">
+        <span class="loan-amount">R500</span>
+        <span class="loan-meta">R650 total</span>
+      </button>
+
+      <button class="loan-option" type="button" data-loan="1000" data-months="2">
+        <span class="loan-amount">R1000</span>
+        <span class="loan-meta">R1300 total</span>
+      </button>
+
+      <button class="loan-option" type="button" data-loan="1500" data-months="3">
+        <span class="loan-amount">R1500</span>
+        <span class="loan-meta">R1950 total</span>
+      </button>
+    </section>
+
+    <section class="calc-card">
+      <div>
+        <p class="calc-label">Selected loan</p>
+        <h2 id="selectedLoan">R500</h2>
+      </div>
+      <div class="calc-right">
+        <p id="selectedRepayment">Repay R650</p>
+        <span id="selectedMonths">1 month</span>
+      </div>
+    </section>
+
+    <section class="form-card">
+      <form
+        action="https://formspree.io/f/mreybwpd"
+        method="POST"
+        id="loanForm"
+      >
+        <input type="hidden" name="_subject" value="New CampusFinance Application" />
+        <input type="hidden" name="_next" value="https://campusfinance.co.za/apply.html?submitted=1">
+        <input type="hidden" name="loan_amount" id="loanAmountInput" value="500" />
+        <input type="hidden" name="repayment_total" id="repaymentTotalInput" value="650" />
+        <input type="hidden" name="repayment_months" id="repaymentMonthsInput" value="1" />
+
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="full_name" required />
+        </div>
+
+        <div class="field">
+          <label for="student">Student number</label>
+          <input type="text" id="student" name="student_number" required />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="field full">
+          <label for="reason">Reason</label>
+          <textarea id="reason" name="reason" rows="4" required></textarea>
+        </div>
+
+        <div class="field full checkbox-line">
+          <input type="checkbox" id="confirm" required />
+          <label for="confirm">I understand the repayment amount shown above.</label>
+        </div>
+
+        <button class="primary-btn full-btn" type="submit">Submit application</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
