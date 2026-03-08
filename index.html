@@ -20,18 +20,12 @@
       --accent:#12b76a;
       --accent-soft:#e8fff3;
       --border:#e4e7ec;
-      --danger:#d92d20;
       --shadow:0 18px 50px rgba(8, 15, 52, 0.16);
       --radius:24px;
     }
 
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
@@ -43,18 +37,14 @@
       color:var(--text);
     }
 
-    a{
-      text-decoration:none;
-    }
+    a{ text-decoration:none; }
 
     .wrapper{
       width:min(1180px, 92%);
       margin:0 auto;
     }
 
-    .topbar{
-      padding:20px 0;
-    }
+    .topbar{ padding:20px 0; }
 
     .brand{
       display:flex;
@@ -78,9 +68,7 @@
       font-weight:900;
     }
 
-    .hero{
-      padding:20px 0 50px;
-    }
+    .hero{ padding:20px 0 50px; }
 
     .hero-grid{
       display:grid;
@@ -213,9 +201,7 @@
       font-weight:600;
     }
 
-    .content{
-      padding:0 0 70px;
-    }
+    .content{ padding:0 0 70px; }
 
     .grid{
       display:grid;
@@ -232,9 +218,7 @@
       border:1px solid rgba(16,24,40,0.04);
     }
 
-    .form-card{
-      padding:30px;
-    }
+    .form-card{ padding:30px; }
 
     .info-card{
       padding:24px;
@@ -267,9 +251,7 @@
       gap:8px;
     }
 
-    .field-full{
-      grid-column:1 / -1;
-    }
+    .field-full{ grid-column:1 / -1; }
 
     label{
       font-weight:700;
@@ -303,17 +285,14 @@
       resize:vertical;
     }
 
-    .hint{
-      color:var(--muted);
-      font-size:0.86rem;
-      line-height:1.5;
-    }
-
-    .upload-box{
-      padding:16px;
-      border:1.5px dashed #cdd5df;
+    .note-box{
+      grid-column:1 / -1;
+      padding:16px 18px;
+      border:1px solid #d6e4ff;
       border-radius:18px;
-      background:#fafcff;
+      background:#f7fbff;
+      color:#344054;
+      line-height:1.65;
     }
 
     .checkbox-row{
@@ -353,12 +332,10 @@
       font-size:1rem;
       font-weight:800;
       cursor:pointer;
-      transition:transform 0.15s ease, opacity 0.15s ease, background 0.2s ease;
+      transition:transform 0.15s ease, background 0.2s ease;
     }
 
-    .btn:hover{
-      transform:translateY(-1px);
-    }
+    .btn:hover{ transform:translateY(-1px); }
 
     .btn-primary{
       background:linear-gradient(135deg, var(--primary), #4f84ff);
@@ -457,9 +434,7 @@
         grid-template-columns:1fr;
       }
 
-      .info-card{
-        position:static;
-      }
+      .info-card{ position:static; }
     }
 
     @media (max-width: 720px){
@@ -471,13 +446,9 @@
         padding:22px;
       }
 
-      .trust-points{
-        grid-template-columns:1fr;
-      }
+      .trust-points{ grid-template-columns:1fr; }
 
-      form{
-        grid-template-columns:1fr;
-      }
+      form{ grid-template-columns:1fr; }
 
       .field-full,
       .checkbox-row,
@@ -502,26 +473,27 @@
           <div class="eyebrow">Student-focused emergency finance</div>
           <h1>Need emergency funds as a student? We’re here to help.</h1>
           <p>
-            When traditional lenders say no, CampusFinance offers a student-friendly application process
-            designed for urgent needs like groceries, transport, books, rent gaps, and unexpected expenses.
+            When traditional lenders say no, CampusFinance offers a student-friendly application
+            process designed for urgent needs like groceries, transport, books, rent gaps, and
+            unexpected expenses.
           </p>
           <p>
-            Simple application. Clear repayment terms. Fast online submission. Built to make students feel
-            supported, respected, and informed every step of the way.
+            Simple application. Clear repayment terms. Fast online submission. Built to help students
+            feel supported, informed, and confident before applying.
           </p>
 
           <div class="trust-points">
             <div class="trust-item">
               <strong>Clear loan terms</strong>
-              <span>No hidden surprises — see your total repayment before you apply.</span>
+              <span>See your total repayment before you apply.</span>
             </div>
             <div class="trust-item">
-              <strong>Secure submission</strong>
-              <span>Your application and supporting documents are submitted through a professional form service.</span>
+              <strong>Simple online process</strong>
+              <span>Apply online in minutes from your phone or laptop.</span>
             </div>
             <div class="trust-item">
-              <strong>Student-friendly process</strong>
-              <span>Made for students who need quick access to short-term emergency funding.</span>
+              <strong>Student-friendly support</strong>
+              <span>Need help? Reach out directly on WhatsApp.</span>
             </div>
           </div>
         </div>
@@ -570,14 +542,11 @@
         <div class="form-card">
           <h2 class="section-title">Apply Online</h2>
           <p class="section-subtitle">
-            Complete the application below and upload the required supporting documents.
+            Complete the application below. After submission, you will be asked to send your
+            supporting documents via WhatsApp.
           </p>
 
-          <form
-            action="https://formspree.io/f/mreybwpd"
-            method="POST"
-            enctype="multipart/form-data"
-          >
+          <form action="https://formspree.io/f/mreybwpd" method="POST">
             <input type="hidden" name="_subject" value="New CampusFinance Application" />
             <input type="hidden" name="source" value="CampusFinance Website" />
             <input type="hidden" name="calculated_total_repayment" id="hiddenTotalRepayment" />
@@ -647,35 +616,17 @@
               ></textarea>
             </div>
 
-            <div class="field-full upload-box">
-              <label for="idCopy">Upload Certified ID Copy</label>
-              <input
-                type="file"
-                id="idCopy"
-                name="certified_id_copy"
-                accept=".pdf,.jpg,.jpeg,.png"
-                required
-              />
-              <div class="hint">Accepted formats: PDF, JPG, JPEG, PNG</div>
-            </div>
-
-            <div class="field-full upload-box">
-              <label for="bankStatement">Upload Bank Statement Reflecting NSFAS / Bursary Income</label>
-              <input
-                type="file"
-                id="bankStatement"
-                name="bank_statement_nsfas_bursary"
-                accept=".pdf,.jpg,.jpeg,.png"
-                required
-              />
-              <div class="hint">Please upload a recent statement showing NSFAS or bursary-related income.</div>
+            <div class="note-box">
+              <strong>Supporting documents required after submission:</strong><br>
+              Please send your certified ID copy and a bank statement reflecting NSFAS/bursary income
+              via WhatsApp to <strong>+27 75 031 1105</strong> after you submit this form.
             </div>
 
             <div class="checkbox-row">
               <input type="checkbox" id="consent" name="consent_confirmation" required />
               <label for="consent">
-                I confirm that the information I have provided is true and correct, and I understand the loan option,
-                repayment period, and total amount payable shown before submission.
+                I confirm that the information I have provided is true and correct, and I understand
+                the loan option, repayment period, and total amount payable shown before submission.
               </label>
             </div>
 
@@ -713,9 +664,9 @@
           </div>
 
           <div class="info-block whatsapp-card">
-            <h4>Need Help Before Applying?</h4>
+            <h4>Send Supporting Documents</h4>
             <p class="small">
-              You can reach CampusFinance on WhatsApp for application support and general questions.
+              After submitting your application, send your certified ID copy and bank statement via WhatsApp.
             </p>
             <a class="wa-btn" href="https://wa.me/27750311105" target="_blank" rel="noopener noreferrer">
               Chat on WhatsApp: +27 75 031 1105
@@ -723,21 +674,14 @@
           </div>
 
           <div class="info-block">
-            <h4>What makes this feel safer?</h4>
-            <p class="small">
-              You can review the total repayment before submitting, upload supporting documents directly,
-              and apply through a structured online form with clear information requirements.
-            </p>
-          </div>
-
-          <div class="info-block">
             <h4>Quick checklist</h4>
             <p class="small">
               Before you submit, make sure you have:
-              <br>• A certified ID copy
-              <br>• A recent bank statement
               <br>• Your student details
               <br>• Your chosen loan option
+              <br>• Your income information
+              <br>• Your certified ID copy ready to send
+              <br>• Your bank statement ready to send
             </p>
           </div>
         </aside>
@@ -804,6 +748,3 @@
   </script>
 </body>
 </html>
-</body>
-</html>
-
