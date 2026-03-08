@@ -6,21 +6,24 @@
   <title>Campus Finance</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <main class="landing-page">
-    <header class="site-header">
-      <a href="index.html" class="logo-wrap">
-        <img src="logo.png" alt="Campus Finance Logo" class="logo" />
-      </a>
-      <a href="apply.html" class="header-btn">Apply</a>
-    </header>
+<body class="home-page">
+  <header class="site-nav site-nav-home">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Campus Finance" class="brand-logo" />
+    </a>
 
-    <section class="hero">
-      <div class="hero-card">
-        <p class="eyebrow">SAFE. SIMPLE. STUDENT FINANCE</p>
-        <h1>Short-term student support when you need it most.</h1>
-        <p class="hero-text">
-          Minimal. Clear. Fast.
+    <nav class="nav-links">
+      <a href="apply.html" class="nav-btn">Apply now</a>
+    </nav>
+  </header>
+
+  <main class="fullscreen-hero">
+    <section class="hero-left">
+      <div class="hero-copy">
+        <p class="mini-label">SAFE. SIMPLE. STUDENT FINANCE</p>
+        <h1>Professional student finance, built for urgent needs.</h1>
+        <p class="hero-subtext">
+          Short-term support for eligible students with clear repayment terms.
         </p>
 
         <div class="hero-actions">
@@ -29,17 +32,23 @@
       </div>
     </section>
 
-    <section class="offers">
-      <div class="offer-box">
-        <span class="offer-type">NSFAS students</span>
-        <h2>R500</h2>
-        <p>Repay R650 in 1 month</p>
-      </div>
+    <section class="hero-right">
+      <div class="glass-panel">
+        <img src="logo.png" alt="Campus Finance logo" class="panel-logo" />
 
-      <div class="offer-box">
-        <span class="offer-type">Bursary students</span>
-        <h2>R1000</h2>
-        <p>Repay R1300 in 1 month</p>
+        <div class="offers-panel">
+          <article class="offer-item">
+            <span class="offer-tag">NSFAS</span>
+            <h2>R500</h2>
+            <p>Repay R650 in 1 month</p>
+          </article>
+
+          <article class="offer-item">
+            <span class="offer-tag">Bursary</span>
+            <h2>R1000</h2>
+            <p>Repay R1300 in 1 month</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
