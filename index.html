@@ -1,1 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusFinance Loan Application</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #2563eb);
+      color: white;
+      padding: 32px;
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+    .hero p {
+      margin: 0;
+      opacity: 0.95;
+      line-height: 1.5;
+    }
+    .content {
+      padding: 28px;
+    }
+    .section-title {
+      margin: 0 0 16px;
+      font-size: 1.25rem;
+      color: #111827;
+    }
+    .loan-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .card {
+      border: 1px solid #dbeafe;
+      border-radius: 14px;
+      padding: 18px;
+      background: #f8fbff;
+    }
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #1d4ed8;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .muted {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .full-width {
+      grid-column: 1 / -1;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .footer-note {
+      margin-top: 18px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+    .repayment-box {
+      margin-top: 24px;
+      padding: 16px;
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      border-radius: 10px;
+    }
+    @media (max-width: 700px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>CampusFinance Micro Loan Application</h1>
+      <p>Fast student-friendly loan applications. Choose a loan option below and complete the form to apply.</p>
+    </div>
+
+    <div class="content">
+      <h2 class="section-title">Available Loan Options</h2>
+      <div class="loan-options">
+        <div class="card">
+          <h3>Option 1</h3>
+          <div class="price">R500</div>
+          <p><strong>Interest:</strong> 30%</p>
+          <p><strong>Repayment Period:</strong> 1 month</p>
+          <p class="muted">Estimated repayment: R650</p>
+        </div>
+
+        <div class="card">
+          <h3>Option 2</h3>
+          <div class="price">R1000</div>
+          <p><strong>Interest:</strong> 30%</p>
+          <p><strong>Repayment Period:</strong> 2 months</p>
+          <p class="muted">Estimated repayment: R1300</p>
+        </div>
+
+        <div class="card">
+          <h3>Option 3</h3>
+          <div class="price">R1500</div>
+          <p><strong>Interest:</strong> 30%</p>
+          <p><strong>Repayment Period:</strong> 3 months</p>
+          <p class="muted">Estimated repayment: R1950</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">Loan Application Form</h2>
+      <form>
+        <div>
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required />
+        </div>
+
+        <div>
+          <label for="studentnumber">Student Number</label>
+          <input type="text" id="studentnumber" name="studentnumber" placeholder="Enter your student number" required />
+        </div>
+
+        <div>
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
+        </div>
+
+        <div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+        </div>
+
+        <div>
+          <label for="loanoption">Select Loan Option</label>
+          <select id="loanoption" name="loanoption" required>
+            <option value="">Choose an option</option>
+            <option value="R500 - 1 month">R500 - 30% interest - 1 month</option>
+            <option value="R1000 - 2 months">R1000 - 30% interest - 2 months</option>
+            <option value="R1500 - 3 months">R1500 - 30% interest - 3 months</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="income">Monthly Income / Allowance</label>
+          <input type="number" id="income" name="income" placeholder="e.g. 2500" required />
+        </div>
+
+        <div class="full-width">
+          <label for="purpose">Reason for Loan</label>
+          <textarea id="purpose" name="purpose" placeholder="Briefly explain why you need the loan" required></textarea>
+        </div>
+
+        <div class="full-width">
+          <label>
+            <input type="checkbox" required />
+            I confirm that the information provided is correct and I understand the repayment terms.
+          </label>
+        </div>
+
+        <div class="full-width">
+          <button type="submit">Submit Application</button>
+        </div>
+      </form>
+
+      <div class="repayment-box">
+        <strong>Repayment Summary:</strong>
+        <p>At 30% interest, the total repayment amounts are:</p>
+        <ul>
+          <li>R500 loan → R650 total repayment</li>
+          <li>R1000 loan → R1300 total repayment</li>
+          <li>R1500 loan → R1950 total repayment</li>
+        </ul>
+      </div>
+
+      <p class="footer-note">Note: This page is a front-end application form. To actually receive submissions online, connect it to Google Forms, Formspree, Firebase, or a backend database.</p>
+    </div>
+  </div>
+</body>
+</html>
 
