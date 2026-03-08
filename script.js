@@ -1,62 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const loanButtons = document.querySelectorAll(".loan-option");
-  const selectedLoan = document.getElementById("selectedLoan");
+  const loanCards = document.querySelectorAll(".loan-card");
+  const selectedType = document.getElementById("selectedType");
   const selectedRepayment = document.getElementById("selectedRepayment");
-  const selectedMonths = document.getElementById("selectedMonths");
+  const selectedTerm = document.getElementById("selectedTerm");
 
+  const studentTypeInput = document.getElementById("studentTypeInput");
   const loanAmountInput = document.getElementById("loanAmountInput");
   const repaymentTotalInput = document.getElementById("repaymentTotalInput");
-  const repaymentMonthsInput = document.getElementById("repaymentMonthsInput");
-
-  const thankYouBox = document.getElementById("thankYouBox");
+  const repaymentTermInput = document.getElementById("repaymentTermInput");
 
   function formatRand(value) {
     return "R" + Number(value).toLocaleString("en-ZA");
   }
 
-  function updateLoan(amount, months, button) {
-    const total = Math.round(amount * 1.3);
+  function updateLoan(card) {
+    const type = card.dataset.type;
+    const loan = card.dataset.loan;
+    const total = card.dataset.total;
+    const months = card.dataset.months;
 
-    if (selectedLoan) {
-      selectedLoan.textContent = formatRand(amount);
+    if (selectedType) {
+      selectedType.textContent = `${type} · ${formatRand(loan)}`;
     }
 
     if (selectedRepayment) {
       selectedRepayment.textContent = `Repay ${formatRand(total)}`;
     }
 
-    if (selectedMonths) {
-      selectedMonths.textContent = `${months} month${months > 1 ? "s" : ""}`;
+    if (selectedTerm) {
+      selectedTerm.textContent = `${months} month · 30% interest`;
+    }
+
+    if (studentTypeInput) {
+      studentTypeInput.value = type;
     }
 
     if (loanAmountInput) {
-      loanAmountInput.value = amount;
+      loanAmountInput.value = loan;
     }
 
     if (repaymentTotalInput) {
       repaymentTotalInput.value = total;
     }
 
-    if (repaymentMonthsInput) {
-      repaymentMonthsInput.value = months;
+    if (repaymentTermInput) {
+      repaymentTermInput.value = `${months} month`;
     }
 
-    loanButtons.forEach((btn) => btn.classList.remove("active"));
-    if (button) {
-      button.classList.add("active");
-    }
+    loanCards.forEach((btn) => btn.classList.remove("active"));
+    card.classList.add("active");
   }
 
-  loanButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const amount = Number(button.dataset.loan);
-      const months = Number(button.dataset.months);
-      updateLoan(amount, months, button);
-    });
+  loanCards.forEach((card) => {
+    card.addEventListener("click", () => updateLoan(card));
   });
 
   const params = new URLSearchParams(window.location.search);
-  if (params.get("submitted") === "1" && thankYouBox) {
-    thankYouBox.classList.remove("hidden");
+  const thankYouModal = document.getElementById("thankYouModal");
+
+  if (params.get("submitted") === "1" && thankYouModal) {
+    thankYouModal.classList.remove("hidden");
   }
 });
