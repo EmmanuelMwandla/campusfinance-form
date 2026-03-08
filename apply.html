@@ -6,97 +6,102 @@
   <title>Apply | Campus Finance</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="apply-body">
+<body class="apply-page">
   <div id="thankYouModal" class="thank-you-modal hidden">
     <div class="thank-you-card">
-      <img src="logo.png" alt="Campus Finance Logo" class="thank-logo" />
+      <img src="logo.png" alt="Campus Finance" class="thank-logo" />
       <h2>Application received</h2>
       <p>Thank you. Your application has been submitted successfully.</p>
       <a href="index.html" class="primary-btn small-btn">Back home</a>
     </div>
   </div>
 
-  <main class="apply-page">
-    <header class="site-header">
-      <a href="index.html" class="logo-wrap">
-        <img src="logo.png" alt="Campus Finance Logo" class="logo" />
-      </a>
-      <a href="index.html" class="header-link">Home</a>
-    </header>
+  <header class="site-nav">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Campus Finance" class="brand-logo" />
+    </a>
 
-    <section class="apply-top">
-      <h1>Apply</h1>
-      <p>Select your student funding type.</p>
-    </section>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
 
-    <section class="loan-options">
-      <button type="button" class="loan-card active" data-type="NSFAS" data-loan="500" data-total="650" data-months="1">
-        <span class="loan-student">NSFAS</span>
-        <strong>R500</strong>
-        <small>Repay R650</small>
-      </button>
-
-      <button type="button" class="loan-card" data-type="Bursary" data-loan="1000" data-total="1300" data-months="1">
-        <span class="loan-student">Bursary</span>
-        <strong>R1000</strong>
-        <small>Repay R1300</small>
-      </button>
-    </section>
-
-    <section class="summary-card">
-      <div>
-        <p class="summary-label">Selected offer</p>
-        <h2 id="selectedType">NSFAS · R500</h2>
+  <main class="apply-layout">
+    <section class="apply-summary-panel">
+      <div class="summary-box">
+        <p class="mini-label blue">SELECTED OFFER</p>
+        <h1 id="selectedType">NSFAS · R500</h1>
+        <div class="summary-amount" id="selectedRepayment">Repay R650</div>
+        <p class="summary-note" id="selectedTerm">1 month · 30% interest</p>
       </div>
-      <div class="summary-right">
-        <p id="selectedRepayment">Repay R650</p>
-        <span id="selectedTerm">1 month · 30% interest</span>
+
+      <div class="selector-grid">
+        <button type="button" class="loan-card active" data-type="NSFAS" data-loan="500" data-total="650" data-months="1">
+          <span>NSFAS</span>
+          <strong>R500</strong>
+          <small>Repay R650</small>
+        </button>
+
+        <button type="button" class="loan-card" data-type="Bursary" data-loan="1000" data-total="1300" data-months="1">
+          <span>Bursary</span>
+          <strong>R1000</strong>
+          <small>Repay R1300</small>
+        </button>
       </div>
     </section>
 
-    <section class="form-card">
-      <form action="https://formspree.io/f/mreybwpd" method="POST">
-        <input type="hidden" name="_subject" value="New Campus Finance Application" />
-        <input type="hidden" name="_next" value="https://campusfinance.co.za/apply.html?submitted=1" />
+    <section class="apply-form-panel">
+      <div class="form-shell">
+        <p class="mini-label green">APPLICATION</p>
+        <h2>Complete your details</h2>
 
-        <input type="hidden" name="student_funding_type" id="studentTypeInput" value="NSFAS" />
-        <input type="hidden" name="loan_amount" id="loanAmountInput" value="500" />
-        <input type="hidden" name="repayment_total" id="repaymentTotalInput" value="650" />
-        <input type="hidden" name="repayment_term" id="repaymentTermInput" value="1 month" />
-        <input type="hidden" name="interest_rate" value="30%" />
+        <form action="https://formspree.io/f/mreybwpd" method="POST">
+          <input type="hidden" name="_subject" value="New Campus Finance Application" />
+          <input type="hidden" name="_next" value="https://campusfinance.co.za/apply.html?submitted=1" />
 
-        <div class="field">
-          <label for="fullname">Full name</label>
-          <input type="text" id="fullname" name="full_name" required />
-        </div>
+          <input type="hidden" name="student_funding_type" id="studentTypeInput" value="NSFAS" />
+          <input type="hidden" name="loan_amount" id="loanAmountInput" value="500" />
+          <input type="hidden" name="repayment_total" id="repaymentTotalInput" value="650" />
+          <input type="hidden" name="repayment_term" id="repaymentTermInput" value="1 month" />
+          <input type="hidden" name="interest_rate" value="30%" />
 
-        <div class="field">
-          <label for="studentnumber">Student number</label>
-          <input type="text" id="studentnumber" name="student_number" required />
-        </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="fullname">Full name</label>
+              <input type="text" id="fullname" name="full_name" required />
+            </div>
 
-        <div class="field">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone" required />
-        </div>
+            <div class="field">
+              <label for="studentnumber">Student number</label>
+              <input type="text" id="studentnumber" name="student_number" required />
+            </div>
 
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
-        </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
 
-        <div class="field full">
-          <label for="reason">Reason</label>
-          <textarea id="reason" name="reason" rows="4" required></textarea>
-        </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
 
-        <div class="field full checkbox-row">
-          <input type="checkbox" id="confirm" required />
-          <label for="confirm">I understand the repayment amount and 1 month term.</label>
-        </div>
+            <div class="field field-full">
+              <label for="reason">Reason</label>
+              <textarea id="reason" name="reason" rows="5" required></textarea>
+            </div>
 
-        <button type="submit" class="primary-btn full-btn">Submit application</button>
-      </form>
+            <div class="field field-full checkbox-row">
+              <input type="checkbox" id="confirm" required />
+              <label for="confirm">I understand the repayment amount, 1 month term, and 30% interest.</label>
+            </div>
+
+            <div class="field field-full">
+              <button type="submit" class="primary-btn full-btn">Submit application</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </section>
   </main>
 
