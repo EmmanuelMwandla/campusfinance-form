@@ -19,33 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const total = card.dataset.total;
     const months = card.dataset.months;
 
-    if (selectedType) {
-      selectedType.textContent = `${type} · ${formatRand(loan)}`;
-    }
+    if (selectedType) selectedType.textContent = `${type} · ${formatRand(loan)}`;
+    if (selectedRepayment) selectedRepayment.textContent = `Repay ${formatRand(total)}`;
+    if (selectedTerm) selectedTerm.textContent = `${months} month · 30% interest`;
 
-    if (selectedRepayment) {
-      selectedRepayment.textContent = `Repay ${formatRand(total)}`;
-    }
-
-    if (selectedTerm) {
-      selectedTerm.textContent = `${months} month · 30% interest`;
-    }
-
-    if (studentTypeInput) {
-      studentTypeInput.value = type;
-    }
-
-    if (loanAmountInput) {
-      loanAmountInput.value = loan;
-    }
-
-    if (repaymentTotalInput) {
-      repaymentTotalInput.value = total;
-    }
-
-    if (repaymentTermInput) {
-      repaymentTermInput.value = `${months} month`;
-    }
+    if (studentTypeInput) studentTypeInput.value = type;
+    if (loanAmountInput) loanAmountInput.value = loan;
+    if (repaymentTotalInput) repaymentTotalInput.value = total;
+    if (repaymentTermInput) repaymentTermInput.value = `${months} month`;
 
     loanCards.forEach((btn) => btn.classList.remove("active"));
     card.classList.add("active");
