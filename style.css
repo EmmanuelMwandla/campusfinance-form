@@ -1,0 +1,426 @@
+:root {
+  --purple: #5f2eea;
+  --purple-dark: #33165f;
+  --purple-soft: #7a46ff;
+  --pink: #d728a8;
+  --pink-dark: #b61f90;
+  --white: #ffffff;
+  --off-white: #f5f3f8;
+  --text: #2d174d;
+  --muted: #7b6d94;
+  --border: rgba(95, 46, 234, 0.12);
+  --shadow: 0 18px 45px rgba(72, 28, 122, 0.18);
+  --radius-xl: 30px;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  color: var(--text);
+}
+
+.landing-body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(215, 40, 168, 0.28), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(95, 46, 234, 0.24), transparent 30%),
+    linear-gradient(160deg, var(--purple) 0%, var(--purple-soft) 55%, var(--pink) 100%);
+}
+
+.apply-body {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, #f4f0fb 0%, #ffffff 100%);
+}
+
+.hero,
+.apply-wrap {
+  width: min(100%, 460px);
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 18px 18px 28px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 34px;
+}
+
+.topbar.light {
+  margin-bottom: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.brand.dark {
+  color: var(--purple-dark);
+}
+
+.brand-main {
+  letter-spacing: -0.5px;
+}
+
+.brand-badge {
+  background: var(--pink);
+  color: white;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 44px;
+  text-align: center;
+}
+
+.nav-btn,
+.back-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.back-link {
+  color: var(--purple-dark);
+  font-weight: 700;
+}
+
+.hero-content {
+  padding-top: 28px;
+}
+
+.eyebrow {
+  color: white;
+  opacity: 0.85;
+  font-size: 0.95rem;
+  margin: 0 0 10px;
+}
+
+.hero-content h1 {
+  color: white;
+  font-size: 2.6rem;
+  line-height: 1.05;
+  margin: 0 0 12px;
+  letter-spacing: -1px;
+}
+
+.hero-text {
+  color: white;
+  opacity: 0.92;
+  font-size: 1.05rem;
+  margin-bottom: 26px;
+}
+
+.offer-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+.offer-label {
+  color: var(--pink);
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.offer-card h2 {
+  margin: 0;
+  font-size: 2.1rem;
+  color: var(--pink);
+}
+
+.offer-sub {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.mini-offers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.mini-card {
+  background: rgba(255,255,255,0.98);
+  border-radius: 22px;
+  padding: 18px 12px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.mini-card strong {
+  display: block;
+  color: var(--purple);
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.mini-card span {
+  color: var(--pink);
+  font-size: 0.9rem;
+}
+
+.hero-actions {
+  margin-top: 10px;
+}
+
+.primary-btn {
+  display: inline-block;
+  width: 100%;
+  border: none;
+  background: var(--pink);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 17px 18px;
+  border-radius: 18px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(215, 40, 168, 0.28);
+}
+
+.primary-btn:hover {
+  background: var(--pink-dark);
+}
+
+.small-btn {
+  width: auto;
+  min-width: 130px;
+}
+
+.apply-header {
+  margin-bottom: 20px;
+}
+
+.apply-header h1 {
+  margin: 0 0 8px;
+  color: var(--purple-dark);
+  font-size: 2rem;
+}
+
+.apply-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.loan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.loan-option {
+  border: none;
+  background: white;
+  border-radius: 22px;
+  padding: 18px 10px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.loan-option.active {
+  background: linear-gradient(180deg, #ffffff 0%, #fff0fb 100%);
+  border-color: var(--pink);
+  transform: translateY(-2px);
+}
+
+.loan-option:hover {
+  transform: translateY(-2px);
+}
+
+.loan-amount {
+  display: block;
+  color: var(--purple);
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.loan-meta {
+  display: block;
+  color: var(--pink);
+  font-size: 0.88rem;
+}
+
+.calc-card {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calc-label {
+  margin: 0 0 6px;
+  opacity: 0.85;
+  font-size: 0.9rem;
+}
+
+.calc-card h2 {
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.calc-right {
+  text-align: right;
+}
+
+.calc-right p {
+  margin: 0 0 5px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.calc-right span {
+  font-size: 0.92rem;
+  opacity: 0.9;
+}
+
+.form-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field.full {
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--purple-dark);
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 15px;
+  font-size: 1rem;
+  color: var(--text);
+  background: #fcfbff;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--pink);
+}
+
+.checkbox-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-line input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+.checkbox-line label {
+  margin: 0;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.thank-you {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 20, 74, 0.52);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
+}
+
+.thank-you-card {
+  width: min(100%, 360px);
+  background: white;
+  border-radius: 26px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.thank-you-card h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--purple-dark);
+}
+
+.thank-you-card p {
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 420px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .offer-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .mini-offers,
+  .loan-grid {
+    gap: 10px;
+  }
+
+  .mini-card,
+  .loan-option {
+    padding: 16px 8px;
+  }
+}
