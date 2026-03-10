@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const repaymentTotalInput = document.getElementById("repaymentTotalInput");
   const repaymentTermInput = document.getElementById("repaymentTermInput");
 
+  const thankYouModal = document.getElementById("thankYouModal");
+  const closeThankYou = document.getElementById("closeThankYou");
+
   function formatRand(value) {
     return "R" + Number(value).toLocaleString("en-ZA");
   }
@@ -37,9 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const params = new URLSearchParams(window.location.search);
-  const thankYouModal = document.getElementById("thankYouModal");
-
   if (params.get("submitted") === "1" && thankYouModal) {
     thankYouModal.classList.remove("hidden");
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  if (closeThankYou && thankYouModal) {
+    closeThankYou.addEventListener("click", () => {
+      thankYouModal.classList.add("hidden");
+    });
   }
 });
