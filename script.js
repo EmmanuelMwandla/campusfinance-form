@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   const loanCards = document.querySelectorAll(".loan-card");
   const selectedType = document.getElementById("selectedType");
   const selectedRepayment = document.getElementById("selectedRepayment");
@@ -12,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const thankYouModal = document.getElementById("thankYouModal");
   const closeThankYou = document.getElementById("closeThankYou");
 
+  const form = document.getElementById("loanForm");
+
   function formatRand(value) {
     return "R" + Number(value).toLocaleString("en-ZA");
   }
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (selectedType) selectedType.textContent = `${type} · ${formatRand(loan)}`;
     if (selectedRepayment) selectedRepayment.textContent = `Repay ${formatRand(total)}`;
-    if (selectedTerm) selectedTerm.textContent = `${months} month · 30% interest`;
+    if (selectedTerm) selectedTerm.textContent = `Repayment period: ${months} month`;
 
     if (studentTypeInput) studentTypeInput.value = type;
     if (loanAmountInput) loanAmountInput.value = loan;
@@ -39,15 +42,32 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", () => updateLoan(card));
   });
 
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("submitted") === "1" && thankYouModal) {
-    thankYouModal.classList.remove("hidden");
-    window.history.replaceState({}, document.title, window.location.pathname);
+  if (form) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+
+      await fetch("https://formspree.io/f/mreybwpd", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      form.reset();
+
+      if (thankYouModal) {
+        thankYouModal.classList.remove("hidden");
+      }
+    });
   }
 
-  if (closeThankYou && thankYouModal) {
+  if (closeThankYou) {
     closeThankYou.addEventListener("click", () => {
       thankYouModal.classList.add("hidden");
     });
   }
+
 });
