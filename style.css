@@ -31,15 +31,9 @@ flex-direction:column;
 justify-content:center;
 }
 
-/* LOGO (FIXED PROPORTIONS) */
-
 .summary-logo{
-height:auto;
-max-width:220px;
-width:100%;
+height:60px;
 margin-bottom:20px;
-display:block;
-filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
 }
 
 .eyebrow{
@@ -47,11 +41,6 @@ letter-spacing:3px;
 font-size:12px;
 opacity:0.8;
 margin-bottom:10px;
-}
-
-.offer-option{
-font-size:14px;
-margin-bottom:4px;
 }
 
 .offer-summary-text h1{
@@ -133,16 +122,9 @@ text-align:center;
 margin-bottom:20px;
 }
 
-/* FORM LOGO (FIXED PROPORTIONS) */
-
 .form-logo{
-height:auto;
-max-width:160px;
-width:100%;
+height:55px;
 margin-bottom:10px;
-display:block;
-margin-left:auto;
-margin-right:auto;
 }
 
 /* FORM */
@@ -199,38 +181,6 @@ background:#3d7422;
 width:100%;
 }
 
-/* THANK YOU MODAL */
-
-.thank-you-modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.4);
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.thank-you-card{
-background:white;
-padding:40px;
-border-radius:10px;
-text-align:center;
-max-width:350px;
-}
-
-.thank-logo{
-height:auto;
-max-width:160px;
-margin-bottom:20px;
-}
-
-.hidden{
-display:none;
-}
-
 /* MOBILE */
 
 @media(max-width:900px){
@@ -254,14 +204,6 @@ padding:30px;
 
 .loan-selector{
 flex-direction:column;
-}
-
-.summary-logo{
-max-width:180px;
-}
-
-.form-logo{
-max-width:140px;
 }
 
 }
