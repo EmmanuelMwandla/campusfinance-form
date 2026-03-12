@@ -1,13 +1,18 @@
 :root {
+  --navy: #163a5f;
+  --navy-dark: #102b46;
+  --navy-soft: #24527a;
   --blue: #2f6ea5;
-  --blue-dark: #1f4d77;
   --green: #4e972e;
-  --text: #21415d;
-  --muted: #6d8397;
+  --white: #ffffff;
+  --bg: #eef3f7;
+  --text: #1f3c57;
+  --muted: #6f8396;
   --line: #dbe6ee;
-  --shadow: 0 20px 60px rgba(18, 47, 72, 0.12);
+  --shadow: 0 20px 60px rgba(16, 43, 70, 0.12);
   --radius-xl: 34px;
   --radius-lg: 24px;
+  --radius-md: 16px;
 }
 
 * {
@@ -25,8 +30,7 @@ body {
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(139, 180, 210, 0.25), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(78, 151, 46, 0.10), transparent 30%),
+    radial-gradient(circle at top left, rgba(47, 110, 165, 0.12), transparent 25%),
     linear-gradient(180deg, #edf3f7 0%, #f8fbfd 100%);
 }
 
@@ -64,7 +68,7 @@ body {
 
 .summary-logo {
   width: 180px;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .form-logo {
@@ -80,7 +84,7 @@ body {
 .single-page-layout {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 0.92fr 1.08fr;
   padding-top: 98px;
 }
 
@@ -93,7 +97,7 @@ body {
 }
 
 .summary-box {
-  background: linear-gradient(135deg, var(--blue), var(--green));
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
   color: white;
   border-radius: var(--radius-xl);
   padding: 34px;
@@ -105,29 +109,41 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.18em;
   font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.eyebrow.blue {
-  color: #dff0fb;
+.offer-summary-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.summary-box h1 {
-  margin: 0 0 14px;
-  font-size: clamp(2rem, 3.5vw, 3.1rem);
+.offer-option {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #b9d6ee;
+}
+
+.offer-borrow {
+  margin: 0;
+  font-size: clamp(2rem, 3.5vw, 3rem);
   line-height: 1.05;
+  color: white;
 }
 
 .summary-amount {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.4rem);
   font-weight: 700;
   line-height: 1;
-  margin-bottom: 10px;
+  color: #d8f0ff;
 }
 
 .summary-note {
   margin: 0;
   font-size: 1rem;
-  opacity: 0.92;
+  opacity: 0.95;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .loan-selector {
@@ -150,12 +166,12 @@ body {
 .loan-card:hover,
 .loan-card.active {
   transform: translateY(-2px);
-  border-color: var(--green);
+  border-color: var(--blue);
 }
 
 .loan-card span {
   display: block;
-  color: var(--green);
+  color: var(--navy);
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -183,7 +199,7 @@ body {
 .form-panel {
   width: 100%;
   max-width: 760px;
-  background: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--radius-xl);
@@ -193,7 +209,7 @@ body {
 
 .form-top h2 {
   margin: 0 0 22px;
-  color: var(--blue-dark);
+  color: var(--navy-dark);
   font-size: 2rem;
 }
 
@@ -216,7 +232,7 @@ label {
   margin-bottom: 8px;
   font-size: 0.92rem;
   font-weight: 700;
-  color: var(--blue-dark);
+  color: var(--navy-dark);
 }
 
 input,
@@ -257,7 +273,7 @@ textarea:focus {
 
 .primary-btn {
   display: inline-block;
-  background: linear-gradient(135deg, var(--green), var(--blue));
+  background: var(--navy);
   color: white;
   text-decoration: none;
   text-align: center;
@@ -267,7 +283,11 @@ textarea:focus {
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 14px 30px rgba(47, 110, 165, 0.16);
+  box-shadow: 0 14px 30px rgba(16, 43, 70, 0.16);
+}
+
+.primary-btn:hover {
+  background: var(--navy-dark);
 }
 
 .small-btn {
@@ -304,7 +324,7 @@ textarea:focus {
 
 .thank-you-card h2 {
   margin: 0 0 10px;
-  color: var(--blue-dark);
+  color: var(--navy-dark);
 }
 
 .thank-you-card p {
@@ -346,5 +366,13 @@ textarea:focus {
 
   .form-panel {
     padding: 24px;
+  }
+
+  .offer-borrow {
+    font-size: 2rem;
+  }
+
+  .summary-amount {
+    font-size: 2.4rem;
   }
 }
