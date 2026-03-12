@@ -27,12 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (selectedOption) selectedOption.textContent = option;
     if (selectedBorrow) selectedBorrow.textContent = `Borrow ${formatRand(loan)}`;
     if (selectedRepayment) selectedRepayment.textContent = `Repay ${formatRand(total)}`;
-    if (selectedTerm) selectedTerm.textContent = `Repayment period: ${months} month`;
+    if (selectedTerm) {
+      selectedTerm.textContent = `Repayment period: ${months} month${months > 1 ? "s" : ""}`;
+    }
 
     if (loanOptionInput) loanOptionInput.value = option;
     if (loanAmountInput) loanAmountInput.value = loan;
     if (repaymentTotalInput) repaymentTotalInput.value = total;
-    if (repaymentTermInput) repaymentTermInput.value = `${months} month`;
+    if (repaymentTermInput) {
+      repaymentTermInput.value = `${months} month${months > 1 ? "s" : ""}`;
+    }
 
     loanCards.forEach((btn) => btn.classList.remove("active"));
     card.classList.add("active");
@@ -45,6 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (form) {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalText = submitButton ? submitButton.textContent : "";
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+      }
 
       const formData = new FormData(form);
 
@@ -59,12 +71,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (response.ok) {
           form.reset();
+
+          const firstCard = document.querySelector('.loan-card[data-option="Option 1"]');
+          if (firstCard) updateLoan(firstCard);
+
           if (thankYouModal) {
             thankYouModal.classList.remove("hidden");
           }
+        } else {
+          alert("There was a problem submitting your application. Please try again.");
         }
       } catch (error) {
-        console.error("Submission failed", error);
+        alert("There was a problem submitting your application. Please try again.");
+        console.error("Submission failed:", error);
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText || "Submit application";
+        }
       }
     });
   }
