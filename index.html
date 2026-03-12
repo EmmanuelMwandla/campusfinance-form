@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Campus Finance</title>
+
+  <link rel="canonical" href="https://campusfinance.co.za/" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="apply-page">
@@ -20,7 +26,7 @@
   </div>
 
   <header class="site-header">
-    <a href="index.html" class="logo-link">
+    <a href="/" class="logo-link">
       <img src="logo.PNG" alt="Campus Finance" class="logo main-logo" />
     </a>
   </header>
@@ -42,7 +48,6 @@
       </div>
 
       <div class="loan-selector">
-
         <button
           type="button"
           class="loan-card active"
@@ -68,13 +73,11 @@
           <strong>R1000</strong>
           <small>Repay R1300</small>
         </button>
-
       </div>
     </section>
 
     <section class="apply-right">
       <div class="form-panel">
-
         <div class="form-top">
           <img src="logo.PNG" alt="Campus Finance" class="logo form-logo" />
           <h2>Apply</h2>
@@ -112,7 +115,6 @@
           />
 
           <div class="field-grid">
-
             <div class="field">
               <label for="fullname">Full name</label>
               <input type="text" id="fullname" name="full_name" required />
@@ -150,15 +152,18 @@
                 Submit application
               </button>
             </div>
-
           </div>
         </form>
-
       </div>
     </section>
 
   </main>
 
+  <script>
+    if (window.location.pathname.endsWith("/index.html")) {
+      window.location.replace("https://campusfinance.co.za/");
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
