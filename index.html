@@ -4,32 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Campus Finance</title>
+
+  <link rel="canonical" href="https://campusfinance.co.za/" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="apply-page">
 
   <div id="thankYouModal" class="thank-you-modal hidden">
     <div class="thank-you-card">
-      <img src="logo.PNG" alt="Campus Finance" class="thank-logo" />
+      <img src="logo.PNG" alt="Campus Finance" class="logo thank-logo" />
       <h2>Application received</h2>
       <p>Thank you. We have received your application.</p>
-      <button type="button" id="closeThankYou" class="primary-btn">Close</button>
+      <button type="button" id="closeThankYou" class="primary-btn small-btn">
+        Close
+      </button>
     </div>
   </div>
+
+  <header class="site-header">
+    <a href="/" class="logo-link">
+      <img src="logo.PNG" alt="Campus Finance" class="logo main-logo" />
+    </a>
+  </header>
 
   <main class="single-page-layout">
 
     <section class="apply-left">
-      <img src="logo.PNG" alt="Campus Finance" class="summary-logo" />
+      <div class="summary-box">
+        <img src="logo.PNG" alt="Campus Finance" class="logo summary-logo" />
 
-      <p class="eyebrow">SELECTED OFFER</p>
+        <p class="eyebrow">SELECTED OFFER</p>
 
-      <div class="offer-summary-text">
-        <p class="offer-option" id="selectedOption">Option 1</p>
-        <h1 id="selectedBorrow">Borrow R500</h1>
-        <div class="summary-amount" id="selectedRepayment">Repay R650</div>
-        <p class="summary-note" id="selectedTerm">Repayment period: 1 month</p>
+        <div class="offer-summary-text">
+          <p class="offer-option" id="selectedOption">Option 1</p>
+          <h1 class="offer-borrow" id="selectedBorrow">Borrow R500</h1>
+          <div class="summary-amount" id="selectedRepayment">Repay R650</div>
+          <p class="summary-note" id="selectedTerm">Repayment period: 1 month</p>
+        </div>
       </div>
 
       <div class="loan-selector">
@@ -63,57 +78,92 @@
 
     <section class="apply-right">
       <div class="form-panel">
-
         <div class="form-top">
-          <img src="logo.PNG" alt="Campus Finance" class="form-logo" />
+          <img src="logo.PNG" alt="Campus Finance" class="logo form-logo" />
           <h2>Apply</h2>
         </div>
 
         <form id="loanForm">
           <input type="hidden" name="_subject" value="New Campus Finance Application" />
-          <input type="hidden" name="loan_option" id="loanOptionInput" value="Option 1" />
-          <input type="hidden" name="loan_amount" id="loanAmountInput" value="500" />
-          <input type="hidden" name="repayment_total" id="repaymentTotalInput" value="650" />
-          <input type="hidden" name="repayment_term" id="repaymentTermInput" value="1 month" />
 
-          <div class="field">
-            <label for="fullname">Full name</label>
-            <input type="text" id="fullname" name="full_name" required />
+          <input
+            type="hidden"
+            name="loan_option"
+            id="loanOptionInput"
+            value="Option 1"
+          />
+
+          <input
+            type="hidden"
+            name="loan_amount"
+            id="loanAmountInput"
+            value="500"
+          />
+
+          <input
+            type="hidden"
+            name="repayment_total"
+            id="repaymentTotalInput"
+            value="650"
+          />
+
+          <input
+            type="hidden"
+            name="repayment_term"
+            id="repaymentTermInput"
+            value="1 month"
+          />
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="fullname">Full name</label>
+              <input type="text" id="fullname" name="full_name" required />
+            </div>
+
+            <div class="field">
+              <label for="studentnumber">Student number</label>
+              <input type="text" id="studentnumber" name="student_number" required />
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="field field-full">
+              <label for="reason">Reason</label>
+              <textarea id="reason" name="reason" rows="5" required></textarea>
+            </div>
+
+            <div class="field field-full checkbox-row">
+              <input type="checkbox" id="confirm" required />
+              <label for="confirm">
+                I understand the repayment amount and 1 month repayment period.
+              </label>
+            </div>
+
+            <div class="field field-full">
+              <button type="submit" class="primary-btn full-btn">
+                Submit application
+              </button>
+            </div>
           </div>
-
-          <div class="field">
-            <label for="studentnumber">Student number</label>
-            <input type="text" id="studentnumber" name="student_number" required />
-          </div>
-
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" required />
-          </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-
-          <div class="field">
-            <label for="reason">Reason</label>
-            <textarea id="reason" name="reason" rows="4" required></textarea>
-          </div>
-
-          <div class="field checkbox-row">
-            <input type="checkbox" id="confirm" required />
-            <label for="confirm">I understand the repayment amount and 1 month repayment period.</label>
-          </div>
-
-          <button type="submit" class="primary-btn full-btn">Submit application</button>
         </form>
-
       </div>
     </section>
 
   </main>
 
+  <script>
+    if (window.location.pathname.endsWith("/index.html")) {
+      window.location.replace("https://campusfinance.co.za/");
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
