@@ -1,18 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const loanCards = document.querySelectorAll(".loan-card");
-  const selectedType = document.getElementById("selectedType");
+  const selectedOption = document.getElementById("selectedOption");
+  const selectedBorrow = document.getElementById("selectedBorrow");
   const selectedRepayment = document.getElementById("selectedRepayment");
   const selectedTerm = document.getElementById("selectedTerm");
 
-  const studentTypeInput = document.getElementById("studentTypeInput");
+  const loanOptionInput = document.getElementById("loanOptionInput");
   const loanAmountInput = document.getElementById("loanAmountInput");
   const repaymentTotalInput = document.getElementById("repaymentTotalInput");
   const repaymentTermInput = document.getElementById("repaymentTermInput");
 
   const thankYouModal = document.getElementById("thankYouModal");
   const closeThankYou = document.getElementById("closeThankYou");
-
   const form = document.getElementById("loanForm");
 
   function formatRand(value) {
@@ -20,16 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateLoan(card) {
-    const type = card.dataset.type;
+    const option = card.dataset.option;
     const loan = card.dataset.loan;
     const total = card.dataset.total;
     const months = card.dataset.months;
 
-    if (selectedType) selectedType.textContent = `${type} · ${formatRand(loan)}`;
+    if (selectedOption) selectedOption.textContent = option;
+    if (selectedBorrow) selectedBorrow.textContent = `Borrow ${formatRand(loan)}`;
     if (selectedRepayment) selectedRepayment.textContent = `Repay ${formatRand(total)}`;
     if (selectedTerm) selectedTerm.textContent = `Repayment period: ${months} month`;
 
-    if (studentTypeInput) studentTypeInput.value = type;
+    if (loanOptionInput) loanOptionInput.value = option;
     if (loanAmountInput) loanAmountInput.value = loan;
     if (repaymentTotalInput) repaymentTotalInput.value = total;
     if (repaymentTermInput) repaymentTermInput.value = `${months} month`;
@@ -48,26 +48,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const formData = new FormData(form);
 
-      await fetch("https://formspree.io/f/mreybwpd", {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
+      try {
+        const response = await fetch("https://formspree.io/f/mreybwpd", {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
 
-      form.reset();
-
-      if (thankYouModal) {
-        thankYouModal.classList.remove("hidden");
+        if (response.ok) {
+          form.reset();
+          if (thankYouModal) {
+            thankYouModal.classList.remove("hidden");
+          }
+        }
+      } catch (error) {
+        console.error("Submission failed", error);
       }
     });
   }
 
-  if (closeThankYou) {
+  if (closeThankYou && thankYouModal) {
     closeThankYou.addEventListener("click", () => {
       thankYouModal.classList.add("hidden");
     });
   }
-
 });
