@@ -8,15 +8,26 @@ font-family:Arial, Helvetica, sans-serif;
 body{
 background:#f5f7fa;
 color:#1a1a1a;
-height:100vh;
-overflow:hidden;
+min-height:100vh;
+}
+
+/* HEADER */
+
+.site-header{
+padding:20px 40px;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+height:55px;
 }
 
 /* MAIN LAYOUT */
 
 .single-page-layout{
 display:flex;
-height:100vh;
+min-height:calc(100vh - 90px);
 }
 
 /* LEFT SIDE */
@@ -25,31 +36,31 @@ height:100vh;
 flex:1;
 background:#236192;
 color:white;
-padding:40px;
+padding:60px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 }
 
 .summary-logo{
-height:60px;
-margin-bottom:20px;
+height:70px;
+margin-bottom:30px;
 }
 
 .eyebrow{
 letter-spacing:3px;
 font-size:12px;
 opacity:0.8;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
 .offer-summary-text h1{
-font-size:40px;
+font-size:42px;
 margin:10px 0;
 }
 
 .summary-amount{
-font-size:32px;
+font-size:34px;
 font-weight:600;
 margin-bottom:10px;
 }
@@ -61,7 +72,7 @@ opacity:0.9;
 /* LOAN OPTIONS */
 
 .loan-selector{
-margin-top:30px;
+margin-top:40px;
 display:flex;
 gap:15px;
 }
@@ -105,12 +116,12 @@ display:flex;
 align-items:center;
 justify-content:center;
 background:#f5f7fa;
-padding:40px;
+padding:60px;
 }
 
 .form-panel{
 background:white;
-padding:30px;
+padding:40px;
 border-radius:10px;
 box-shadow:0 10px 25px rgba(0,0,0,0.08);
 width:100%;
@@ -119,18 +130,18 @@ max-width:420px;
 
 .form-top{
 text-align:center;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
 .form-logo{
-height:55px;
+height:60px;
 margin-bottom:10px;
 }
 
 /* FORM */
 
 .field{
-margin-bottom:15px;
+margin-bottom:18px;
 display:flex;
 flex-direction:column;
 }
@@ -181,25 +192,51 @@ background:#3d7422;
 width:100%;
 }
 
+/* THANK YOU MODAL */
+
+.thank-you-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.thank-you-card{
+background:white;
+padding:40px;
+border-radius:10px;
+text-align:center;
+max-width:350px;
+}
+
+.thank-logo{
+height:60px;
+margin-bottom:20px;
+}
+
+.hidden{
+display:none;
+}
+
 /* MOBILE */
 
 @media(max-width:900px){
 
-body{
-overflow:auto;
-}
-
 .single-page-layout{
 flex-direction:column;
-height:auto;
 }
 
 .apply-left{
-padding:30px;
+padding:40px;
 }
 
 .apply-right{
-padding:30px;
+padding:40px;
 }
 
 .loan-selector{
