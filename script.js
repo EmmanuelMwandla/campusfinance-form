@@ -24,15 +24,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const total = card.dataset.total;
     const months = card.dataset.months;
 
-    selectedOption.textContent = option;
-    selectedBorrow.textContent = `Borrow ${formatRand(loan)}`;
-    selectedRepayment.textContent = `Repay ${formatRand(total)}`;
-    selectedTerm.textContent = `Repayment period: ${months} month${months > 1 ? "s" : ""}`;
+    if (selectedOption) selectedOption.textContent = option;
+    if (selectedBorrow) selectedBorrow.textContent = `Borrow ${formatRand(loan)}`;
+    if (selectedRepayment) selectedRepayment.textContent = `Repay ${formatRand(total)}`;
+    if (selectedTerm) {
+      selectedTerm.textContent = `Repayment period: ${months} month${months > 1 ? "s" : ""}`;
+    }
 
-    loanOptionInput.value = option;
-    loanAmountInput.value = loan;
-    repaymentTotalInput.value = total;
-    repaymentTermInput.value = `${months} month${months > 1 ? "s" : ""}`;
+    if (loanOptionInput) loanOptionInput.value = option;
+    if (loanAmountInput) loanAmountInput.value = loan;
+    if (repaymentTotalInput) repaymentTotalInput.value = total;
+    if (repaymentTermInput) {
+      repaymentTermInput.value = `${months} month${months > 1 ? "s" : ""}`;
+    }
 
     loanCards.forEach((btn) => btn.classList.remove("active"));
     card.classList.add("active");
@@ -47,10 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
 
       const submitButton = form.querySelector('button[type="submit"]');
-      const originalText = submitButton.textContent;
+      const originalText = submitButton ? submitButton.textContent : "";
 
-      submitButton.disabled = true;
-      submitButton.textContent = "Submitting...";
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+      }
 
       const formData = new FormData(form);
 
@@ -59,32 +65,35 @@ document.addEventListener("DOMContentLoaded", () => {
           method: "POST",
           body: formData,
           headers: {
-            "Accept": "application/json"
-          }
+            Accept: "application/json",
+          },
         });
-
-        const data = await response.json().catch(() => ({}));
 
         if (response.ok) {
           form.reset();
+
           const firstCard = document.querySelector('.loan-card[data-option="Option 1"]');
           if (firstCard) updateLoan(firstCard);
-          thankYouModal.classList.remove("hidden");
+
+          if (thankYouModal) {
+            thankYouModal.classList.remove("hidden");
+          }
         } else {
-          const message = data.errors?.[0]?.message || "There was a problem submitting your application. Please try again.";
-          alert(message);
+          alert("There was a problem submitting your application. Please try again.");
         }
       } catch (error) {
-        alert("Network error. Please check your connection and try again.");
-        console.error(error);
+        alert("There was a problem submitting your application. Please try again.");
+        console.error("Submission failed:", error);
       } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = originalText;
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText || "Submit application";
+        }
       }
     });
   }
 
-  if (closeThankYou) {
+  if (closeThankYou && thankYouModal) {
     closeThankYou.addEventListener("click", () => {
       thankYouModal.classList.add("hidden");
     });
