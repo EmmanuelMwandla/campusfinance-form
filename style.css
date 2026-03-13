@@ -1,315 +1,434 @@
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial, Helvetica, sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-background:#f5f7fa;
-color:#1a1a1a;
-min-height:100vh;
+  background:#f5f7fa;
+  color:#1a1a1a;
+  min-height:100vh;
 }
 
 /* HEADER */
 
 .site-header{
-padding:20px 40px;
-background:white;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  padding:20px 40px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo-link{
+  display:inline-block;
 }
 
 .logo{
-height:55px;
+  height:55px;
+}
+
+.main-logo{
+  height:55px;
 }
 
 /* MAIN LAYOUT */
 
 .single-page-layout{
-display:flex;
-min-height:calc(100vh - 90px);
+  display:flex;
+  min-height:calc(100vh - 90px);
 }
 
 /* LEFT SIDE */
 
 .apply-left{
-flex:1;
-background:#236192;
-color:white;
-padding:60px;
-display:flex;
-flex-direction:column;
-justify-content:center;
+  flex:1;
+  background:#236192;
+  color:white;
+  padding:60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.summary-box{
+  max-width:500px;
 }
 
 .summary-logo{
-height:70px;
-margin-bottom:30px;
+  height:70px;
+  margin-bottom:30px;
 }
 
 .eyebrow{
-letter-spacing:3px;
-font-size:12px;
-opacity:0.8;
-margin-bottom:15px;
+  letter-spacing:3px;
+  font-size:12px;
+  opacity:0.8;
+  margin-bottom:15px;
+}
+
+.offer-option{
+  font-size:16px;
+  opacity:0.95;
 }
 
 .offer-summary-text h1{
-font-size:42px;
-margin:10px 0;
+  font-size:42px;
+  margin:10px 0;
+  line-height:1.15;
 }
 
 .summary-amount{
-font-size:34px;
-font-weight:600;
-margin-bottom:10px;
+  font-size:34px;
+  font-weight:600;
+  margin-bottom:10px;
 }
 
 .summary-note{
-opacity:0.9;
+  opacity:0.9;
+  font-size:15px;
 }
 
 /* LOAN OPTIONS */
 
 .loan-selector{
-margin-top:40px;
-display:flex;
-gap:15px;
+  margin-top:40px;
+  display:flex;
+  gap:15px;
+  max-width:500px;
 }
 
 .loan-card{
-flex:1;
-border:none;
-padding:20px;
-background:white;
-color:#1a1a1a;
-border-radius:10px;
-cursor:pointer;
-text-align:center;
-transition:all .2s ease;
+  flex:1;
+  border:none;
+  padding:20px;
+  background:white;
+  color:#1a1a1a;
+  border-radius:10px;
+  cursor:pointer;
+  text-align:center;
+  transition:all .2s ease;
 }
 
 .loan-card:hover{
-transform:translateY(-3px);
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transform:translateY(-3px);
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .loan-card strong{
-display:block;
-font-size:22px;
-margin:5px 0;
+  display:block;
+  font-size:22px;
+  margin:5px 0;
 }
 
 .loan-card small{
-color:#666;
+  color:#666;
 }
 
 .loan-card.active{
-border:2px solid #4c8c2b;
+  border:2px solid #4c8c2b;
 }
 
 /* RIGHT SIDE */
 
 .apply-right{
-flex:1;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#f5f7fa;
-padding:60px;
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f5f7fa;
+  padding:60px;
 }
 
 .form-panel{
-background:white;
-padding:40px;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-width:100%;
-max-width:420px;
+  background:white;
+  padding:40px;
+  border-radius:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  width:100%;
+  max-width:460px;
 }
 
 .form-top{
-text-align:center;
-margin-bottom:25px;
+  text-align:center;
+  margin-bottom:25px;
 }
 
 .form-logo{
-height:60px;
-margin-bottom:10px;
+  height:60px;
+  margin-bottom:10px;
 }
 
 /* FORM */
 
+.field-grid{
+  display:flex;
+  flex-direction:column;
+}
+
 .field{
-margin-bottom:18px;
-display:flex;
-flex-direction:column;
+  margin-bottom:18px;
+  display:flex;
+  flex-direction:column;
+}
+
+.field-full{
+  width:100%;
 }
 
 .field label{
-font-size:13px;
-margin-bottom:5px;
-color:#444;
+  font-size:13px;
+  margin-bottom:5px;
+  color:#444;
+  font-weight:600;
 }
 
 .field input,
 .field textarea{
-padding:10px;
-border:1px solid #ddd;
-border-radius:6px;
-font-size:14px;
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  font-size:14px;
+  width:100%;
 }
 
 .field textarea{
-resize:vertical;
+  resize:vertical;
+  min-height:120px;
+}
+
+.field input[type="file"]{
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  font-size:14px;
+  background:#fff;
+}
+
+.field-help{
+  display:block;
+  margin-top:6px;
+  font-size:12px;
+  color:#666;
+  line-height:1.4;
 }
 
 .checkbox-row{
-flex-direction:row;
-align-items:center;
-gap:10px;
-font-size:13px;
+  flex-direction:row;
+  align-items:flex-start;
+  gap:10px;
+  font-size:13px;
+}
+
+.checkbox-row input[type="checkbox"]{
+  width:auto;
+  margin-top:3px;
+  flex-shrink:0;
+}
+
+.checkbox-row label{
+  margin-bottom:0;
+  font-weight:normal;
+  line-height:1.4;
 }
 
 /* SUBMIT BUTTON */
 
 .primary-btn{
-background:#4c8c2b;
-color:white;
-border:none;
-padding:14px;
-border-radius:6px;
-font-size:15px;
-cursor:pointer;
-transition:.2s;
+  background:#4c8c2b;
+  color:white;
+  border:none;
+  padding:14px;
+  border-radius:6px;
+  font-size:15px;
+  cursor:pointer;
+  transition:.2s;
 }
 
 .primary-btn:hover{
-background:#3d7422;
+  background:#3d7422;
+}
+
+.primary-btn:disabled{
+  opacity:0.7;
+  cursor:not-allowed;
 }
 
 .full-btn{
-width:100%;
+  width:100%;
+}
+
+.small-btn{
+  min-width:120px;
 }
 
 /* THANK YOU MODAL */
 
 .thank-you-modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.4);
-display:flex;
-align-items:center;
-justify-content:center;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1200;
 }
 
 .thank-you-card{
-background:white;
-padding:40px;
-border-radius:10px;
-text-align:center;
-max-width:350px;
+  background:white;
+  padding:40px;
+  border-radius:10px;
+  text-align:center;
+  max-width:350px;
+  width:90%;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.thank-you-card h2{
+  margin-bottom:10px;
+}
+
+.thank-you-card p{
+  margin-bottom:20px;
+  color:#555;
 }
 
 .thank-logo{
-height:60px;
-margin-bottom:20px;
+  height:60px;
+  margin-bottom:20px;
 }
 
 .hidden{
-display:none;
+  display:none;
 }
 
 /* FOOTER */
 
 .site-footer{
-background:#111;
-color:white;
-padding:50px 20px;
-text-align:center;
+  background:#111;
+  color:white;
+  padding:50px 20px;
+  text-align:center;
 }
 
 .footer-content{
-max-width:800px;
-margin:auto;
+  max-width:800px;
+  margin:auto;
 }
 
 .footer-contact h3{
-margin-bottom:15px;
-font-size:22px;
+  margin-bottom:15px;
+  font-size:22px;
 }
 
 .contact-item{
-margin:8px 0;
-font-size:15px;
+  margin:8px 0;
+  font-size:15px;
 }
 
 .contact-item a{
-color:#4c8c2b;
-text-decoration:none;
+  color:#4c8c2b;
+  text-decoration:none;
 }
 
 .contact-item a:hover{
-text-decoration:underline;
+  text-decoration:underline;
 }
 
 .whatsapp-qr{
-margin-top:20px;
-width:180px;
-border-radius:10px;
-background:white;
-padding:10px;
+  margin-top:20px;
+  width:180px;
+  max-width:100%;
+  border-radius:10px;
+  background:white;
+  padding:10px;
 }
 
 .qr-note{
-margin-top:10px;
-font-size:13px;
-opacity:0.8;
+  margin-top:10px;
+  font-size:13px;
+  opacity:0.8;
 }
+
 /* WHATSAPP FLOAT BUTTON */
 
 .whatsapp-chat-btn{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25D366;
-color:white;
-padding:14px 18px;
-border-radius:30px;
-font-size:14px;
-font-weight:600;
-text-decoration:none;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-z-index:999;
-transition:.2s;
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  color:white;
+  padding:14px 18px;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  z-index:999;
+  transition:.2s;
 }
 
 .whatsapp-chat-btn:hover{
-background:#1ebe5d;
-transform:translateY(-2px);
+  background:#1ebe5d;
+  transform:translateY(-2px);
 }
 
 /* MOBILE */
 
 @media(max-width:900px){
+  .single-page-layout{
+    flex-direction:column;
+  }
 
-.single-page-layout{
-flex-direction:column;
+  .apply-left{
+    padding:40px 25px;
+  }
+
+  .apply-right{
+    padding:40px 20px;
+  }
+
+  .loan-selector{
+    flex-direction:column;
+  }
+
+  .form-panel{
+    padding:30px 20px;
+  }
+
+  .offer-summary-text h1{
+    font-size:34px;
+  }
+
+  .summary-amount{
+    font-size:28px;
+  }
 }
 
-.apply-left{
-padding:40px;
-}
+@media(max-width:600px){
+  .site-header{
+    padding:18px 20px;
+  }
 
-.apply-right{
-padding:40px;
-}
+  .logo,
+  .main-logo{
+    height:48px;
+  }
 
-.loan-selector{
-flex-direction:column;
-}
+  .summary-logo{
+    height:60px;
+  }
 
+  .form-logo{
+    height:55px;
+  }
+
+  .whatsapp-chat-btn{
+    right:15px;
+    bottom:15px;
+    padding:12px 16px;
+    font-size:13px;
+  }
 }
