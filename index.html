@@ -83,7 +83,7 @@
           <h2>Apply</h2>
         </div>
 
-        <form id="loanForm">
+        <form id="loanForm" enctype="multipart/form-data">
           <input type="hidden" name="_subject" value="New Campus Finance Application" />
 
           <input
@@ -121,7 +121,7 @@
             </div>
 
             <div class="field">
-              <label for="studentnumber">ID number</label>
+              <label for="studentnumber">Student number</label>
               <input type="text" id="studentnumber" name="student_number" required />
             </div>
 
@@ -138,6 +138,34 @@
             <div class="field field-full">
               <label for="reason">Reason</label>
               <textarea id="reason" name="reason" rows="5" required></textarea>
+            </div>
+
+            <div class="field field-full">
+              <label for="idUpload">Upload ID copy</label>
+              <input
+                type="file"
+                id="idUpload"
+                name="id_copy"
+                accept=".pdf,.jpg,.jpeg,.png"
+                required
+              />
+              <small class="field-help">
+                Upload a clear ID copy in PDF, JPG, JPEG, or PNG format.
+              </small>
+            </div>
+
+            <div class="field field-full">
+              <label for="bankStatement">Upload bank statement</label>
+              <input
+                type="file"
+                id="bankStatement"
+                name="bank_statement"
+                accept=".pdf,.jpg,.jpeg,.png"
+                required
+              />
+              <small class="field-help">
+                Upload a bank statement showing regular or consistent income such as NSFAS or bursary payments.
+              </small>
             </div>
 
             <div class="field field-full checkbox-row">
@@ -159,51 +187,47 @@
 
   </main>
 
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-contact">
+        <h3>Contact Campus Finance</h3>
+
+        <p class="contact-item">
+          Email:
+          <a href="mailto:info@campusfinance.co.za">
+            info@campusfinance.co.za
+          </a>
+        </p>
+
+        <p class="contact-item">WhatsApp</p>
+
+        <img
+          src="whatsapp-qr.png"
+          alt="Campus Finance WhatsApp QR"
+          class="whatsapp-qr"
+        />
+
+        <p class="qr-note">
+          Scan to chat with Campus Finance on WhatsApp
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a
+    href="https://wa.me/27700000000?text=Hello%20Campus%20Finance%20I%20want%20to%20apply%20for%20a%20student%20loan"
+    class="whatsapp-chat-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Chat on WhatsApp
+  </a>
+
   <script>
     if (window.location.pathname.endsWith("/index.html")) {
       window.location.replace("https://campusfinance.co.za/");
     }
   </script>
   <script src="script.js"></script>
-
-  <footer class="site-footer">
-
-  <div class="footer-content">
-
-    <div class="footer-contact">
-      <h3>Contact Campus Finance</h3>
-
-      <p class="contact-item">
-        Email:
-        <a href="mailto:info@campusfinance.co.za">
-          info@campusfinance.co.za
-        </a>
-      </p>
-
-      <p class="contact-item">WhatsApp</p>
-
-      <img
-        src="whatsapp-qr.png"
-        alt="Campus Finance WhatsApp QR"
-        class="whatsapp-qr"
-      />
-
-      <p class="qr-note">
-        Scan to chat with Campus Finance on WhatsApp
-      </p>
-
-    </div>
-
-  </div>
-  <a 
-  href="https://wa.me/27750311105" 
-  class="whatsapp-chat-btn" 
-  target="_blank"
->
-  Chat on WhatsApp
-</a>
-
-</footer>
-  
 </body>
 </html>
