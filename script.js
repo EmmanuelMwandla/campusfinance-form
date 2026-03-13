@@ -22,18 +22,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const option = card.dataset.option;
     const loan = card.dataset.loan;
     const total = card.dataset.total;
-    const months = card.dataset.months;
+    const months = Number(card.dataset.months);
 
-    if (selectedOption) selectedOption.textContent = option;
-    if (selectedBorrow) selectedBorrow.textContent = `Borrow ${formatRand(loan)}`;
-    if (selectedRepayment) selectedRepayment.textContent = `Repay ${formatRand(total)}`;
+    if (selectedOption) {
+      selectedOption.textContent = option;
+    }
+
+    if (selectedBorrow) {
+      selectedBorrow.textContent = `Borrow ${formatRand(loan)}`;
+    }
+
+    if (selectedRepayment) {
+      selectedRepayment.textContent = `Repay ${formatRand(total)}`;
+    }
+
     if (selectedTerm) {
       selectedTerm.textContent = `Repayment period: ${months} month${months > 1 ? "s" : ""}`;
     }
 
-    if (loanOptionInput) loanOptionInput.value = option;
-    if (loanAmountInput) loanAmountInput.value = loan;
-    if (repaymentTotalInput) repaymentTotalInput.value = total;
+    if (loanOptionInput) {
+      loanOptionInput.value = option;
+    }
+
+    if (loanAmountInput) {
+      loanAmountInput.value = loan;
+    }
+
+    if (repaymentTotalInput) {
+      repaymentTotalInput.value = total;
+    }
+
     if (repaymentTermInput) {
       repaymentTermInput.value = `${months} month${months > 1 ? "s" : ""}`;
     }
@@ -51,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
 
       const submitButton = form.querySelector('button[type="submit"]');
-      const originalText = submitButton ? submitButton.textContent : "";
+      const originalText = submitButton ? submitButton.textContent : "Submit application";
 
       if (submitButton) {
         submitButton.disabled = true;
@@ -73,7 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
           form.reset();
 
           const firstCard = document.querySelector('.loan-card[data-option="Option 1"]');
-          if (firstCard) updateLoan(firstCard);
+          if (firstCard) {
+            updateLoan(firstCard);
+          }
 
           if (thankYouModal) {
             thankYouModal.classList.remove("hidden");
@@ -82,12 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("There was a problem submitting your application. Please try again.");
         }
       } catch (error) {
-        alert("There was a problem submitting your application. Please try again.");
         console.error("Submission failed:", error);
+        alert("There was a problem submitting your application. Please try again.");
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
-          submitButton.textContent = originalText || "Submit application";
+          submitButton.textContent = originalText;
         }
       }
     });
@@ -96,6 +116,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (closeThankYou && thankYouModal) {
     closeThankYou.addEventListener("click", () => {
       thankYouModal.classList.add("hidden");
+    });
+  }
+
+  if (thankYouModal) {
+    thankYouModal.addEventListener("click", (event) => {
+      if (event.target === thankYouModal) {
+        thankYouModal.classList.add("hidden");
+      }
     });
   }
 });
