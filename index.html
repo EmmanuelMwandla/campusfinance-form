@@ -162,19 +162,22 @@
                 Upload a bank statement showing regular or consistent income such as NSFAS or bursary payments.
               </small>
             </div>
-            <div class="upload-card">
-              <label for="bankLetter">Nominated Bank Account Letter</label>
+
+            <!-- NEW FIELD ADDED -->
+            <div class="field field-full">
+              <label for="bankConfirmation">Upload nominated bank account confirmation letter</label>
               <input
                 type="file"
-                id="bankLetter"
-                name="bankLetter"
+                id="bankConfirmation"
+                name="bank_account_confirmation_letter"
                 accept=".pdf,.jpg,.jpeg,.png"
                 required
               />
-              <small>
-                Upload the bank account confirmation letter for the account to be paid if approved.
+              <small class="field-help">
+                Upload your nominated bank account confirmation letter for payment if your application is successful.
               </small>
             </div>
+            <!-- END NEW FIELD -->
 
             <div class="field field-full checkbox-row">
               <input type="checkbox" id="confirm" required />
