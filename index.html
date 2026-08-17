@@ -4,11 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Campus Finance</title>
+  <meta name="description" content="Campus Finance offers quick short-term loans for students. Apply online in minutes and get a decision within 24 hours." />
 
   <link rel="canonical" href="https://campusfinance.co.za/" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="shortcut icon" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Campus Finance" />
+  <meta property="og:description" content="Quick short-term loans for students. Apply online in minutes and get a decision within 24 hours." />
+  <meta property="og:url" content="https://campusfinance.co.za/" />
+  <meta property="og:image" content="https://campusfinance.co.za/logo.PNG" />
+  <meta name="twitter:card" content="summary" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -77,9 +85,11 @@
           <img src="logo.PNG" alt="Campus Finance" class="logo form-logo" />
           <h2>Apply</h2>
         </div>
+        <p class="required-legend"><span class="required-mark">*</span> Required</p>
 
         <form id="loanForm" enctype="multipart/form-data">
           <input type="hidden" name="_subject" value="New Campus Finance Application" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <input
             type="hidden"
@@ -111,32 +121,32 @@
 
           <div class="field-grid">
             <div class="field">
-              <label for="fullname">Full name</label>
+              <label for="fullname">Full name <span class="required-mark">*</span></label>
               <input type="text" id="fullname" name="full_name" required />
             </div>
 
             <div class="field">
-              <label for="studentnumber">ID number</label>
+              <label for="studentnumber">ID number <span class="required-mark">*</span></label>
               <input type="text" id="studentnumber" name="student_number" required />
             </div>
 
             <div class="field">
-              <label for="phone">Phone</label>
+              <label for="phone">Phone <span class="required-mark">*</span></label>
               <input type="tel" id="phone" name="phone" required />
             </div>
 
             <div class="field">
-              <label for="email">Email</label>
+              <label for="email">Email <span class="required-mark">*</span></label>
               <input type="email" id="email" name="email" required />
             </div>
 
             <div class="field field-full">
-              <label for="reason">Reason</label>
+              <label for="reason">Reason <span class="required-mark">*</span></label>
               <textarea id="reason" name="reason" rows="5" required></textarea>
             </div>
 
             <div class="field field-full">
-              <label for="idUpload">Upload ID copy</label>
+              <label for="idUpload">Upload ID copy <span class="required-mark">*</span></label>
               <input
                 type="file"
                 id="idUpload"
@@ -150,7 +160,7 @@
             </div>
 
             <div class="field field-full">
-              <label for="bankStatement">Upload bank statement</label>
+              <label for="bankStatement">Upload bank statement <span class="required-mark">*</span></label>
               <input
                 type="file"
                 id="bankStatement"
@@ -165,7 +175,7 @@
 
             <!-- NEW FIELD ADDED -->
             <div class="field field-full">
-              <label for="bankConfirmation">Upload nominated bank account confirmation letter</label>
+              <label for="bankConfirmation">Upload nominated bank account confirmation letter <span class="required-mark">*</span></label>
               <input
                 type="file"
                 id="bankConfirmation"

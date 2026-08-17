@@ -164,6 +164,17 @@ a {
   color: #0f4c81;
 }
 
+.required-legend {
+  font-size: 13px;
+  color: #5f6f82;
+  margin-bottom: 18px;
+}
+
+.required-mark {
+  color: #e02424;
+  font-weight: 700;
+}
+
 .field-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

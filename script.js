@@ -64,9 +64,23 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", () => updateLoan(card));
   });
 
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+  const uploadFieldIds = ["idUpload", "bankStatement", "bankConfirmation"];
+
   if (form) {
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+
+      for (const fieldId of uploadFieldIds) {
+        const fileInput = document.getElementById(fieldId);
+        const file = fileInput && fileInput.files[0];
+        if (file && file.size > MAX_FILE_SIZE) {
+          alert(
+            `"${file.name}" is too large (max 5MB). Please upload a smaller file.`
+          );
+          return;
+        }
+      }
 
       const submitButton = form.querySelector('button[type="submit"]');
       const originalText = submitButton ? submitButton.textContent : "Submit application";
@@ -99,7 +113,18 @@ document.addEventListener("DOMContentLoaded", () => {
             thankYouModal.classList.remove("hidden");
           }
         } else {
-          alert("There was a problem submitting your application. Please try again.");
+          let message = "There was a problem submitting your application. Please try again.";
+          try {
+            const data = await response.json();
+            if (data && Array.isArray(data.errors) && data.errors.length) {
+              message = data.errors
+                .map((err) => err.message || `${err.field} is invalid`)
+                .join(" ");
+            }
+          } catch (parseError) {
+            // response body wasn't JSON; fall back to the generic message
+          }
+          alert(message);
         }
       } catch (error) {
         console.error("Submission failed:", error);
