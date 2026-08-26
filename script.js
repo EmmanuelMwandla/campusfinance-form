@@ -14,6 +14,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeThankYou = document.getElementById("closeThankYou");
   const form = document.getElementById("loanForm");
 
+  const studentNumberInput = document.getElementById("studentnumber");
+  const studentNumberHint = document.getElementById("studentNumberHint");
+  if (studentNumberInput) {
+    studentNumberInput.addEventListener("input", () => {
+      studentNumberInput.value = studentNumberInput.value.replace(/\D/g, "").slice(0, 13);
+
+      if (studentNumberHint) {
+        const count = studentNumberInput.value.length;
+        studentNumberHint.textContent = `${count}/13 digits`;
+        studentNumberHint.classList.toggle("is-complete", count === 13);
+      }
+    });
+  }
+
+  const collectionDateInput = document.getElementById("collectionDate");
+  if (collectionDateInput) {
+    collectionDateInput.min = new Date().toISOString().split("T")[0];
+  }
+
   const idUploadInput = document.getElementById("idUpload");
   const bankStatementInput = document.getElementById("bankStatement");
   const uploadProgress = document.getElementById("uploadProgress");

@@ -135,8 +135,19 @@
             </div>
 
             <div class="field">
-              <label for="studentnumber">ID number</label>
-              <input type="text" id="studentnumber" name="id_number" inputmode="numeric" autocomplete="off" required />
+              <label for="idNumber">ID number</label>
+              <input
+                type="text"
+                id="idNumber"
+                name="id_number"
+                inputmode="numeric"
+                autocomplete="off"
+                pattern="[0-9]{13}"
+                maxlength="13"
+                title="Enter your 13-digit South African ID number"
+                required
+              />
+              <small class="field-help" id="idNumberHint">0/13 digits</small>
             </div>
 
             <div class="field">
@@ -152,6 +163,36 @@
             <div class="field field-full">
               <label for="reason">Reason</label>
               <textarea id="reason" name="reason" rows="2" required></textarea>
+            </div>
+
+            <div class="field">
+              <label for="collectionDate">Preferred collection date</label>
+              <input type="date" id="collectionDate" name="collection_date" required />
+            </div>
+
+            <div class="field">
+              <label for="incomeSource">Source of income</label>
+              <select id="incomeSource" name="income_source" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="NSFAS">NSFAS</option>
+                <option value="Bursary">Bursary</option>
+                <option value="Part-time job">Part-time job</option>
+                <option value="Parent/Guardian support">Parent/Guardian support</option>
+                <option value="Salary">Salary</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="field field-full">
+              <label for="incomeDetails">Source of income details</label>
+              <input
+                type="text"
+                id="incomeDetails"
+                name="income_details"
+                placeholder="e.g. Monthly allowance, employer name"
+                autocomplete="off"
+                required
+              />
             </div>
 
             <div class="field field-full">
@@ -186,7 +227,7 @@
             <div class="field field-full checkbox-row">
               <input type="checkbox" id="confirm" required />
               <label for="confirm">
-                I understand the repayment amount and 1 month repayment period.
+                I understand the repayment amount and <strong>1 month</strong> repayment period.
               </label>
             </div>
 
