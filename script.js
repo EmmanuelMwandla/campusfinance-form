@@ -64,8 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", () => updateLoan(card));
   });
 
+  // Deploy apps-script/Code.gs as a Web App and paste its /exec URL here.
+  const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycby9Wo2CBqem6TWlac6RogacV1m2aYH7H62JAejKWOIQAorBbtghZ1WkFdEXTfvvsLch/exec";
+
   const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
   const uploadFieldIds = ["idUpload", "bankStatement", "bankConfirmation"];
+
+  function readFileAsBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(file);
+    });
+  }
 
   if (form) {
     form.addEventListener("submit", async (event) => {
@@ -90,18 +102,43 @@ document.addEventListener("DOMContentLoaded", () => {
         submitButton.textContent = "Submitting...";
       }
 
-      const formData = new FormData(form);
-
       try {
-        const response = await fetch("https://formspree.io/f/xqeylaoy", {
+        const formData = new FormData(form);
+        const fields = {};
+        let gotcha = "";
+
+        for (const [key, value] of formData.entries()) {
+          if (value instanceof File) continue;
+          if (key === "_gotcha") {
+            gotcha = value;
+          } else if (key !== "_subject") {
+            fields[key] = value;
+          }
+        }
+
+        const files = [];
+        for (const fieldId of uploadFieldIds) {
+          const fileInput = document.getElementById(fieldId);
+          const file = fileInput && fileInput.files[0];
+          if (file) {
+            files.push({
+              fieldName: fileInput.name,
+              filename: file.name,
+              mimeType: file.type || "application/octet-stream",
+              base64: await readFileAsBase64(file),
+            });
+          }
+        }
+
+        const response = await fetch(FORM_ENDPOINT, {
           method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json",
-          },
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ fields, files, gotcha }),
         });
 
-        if (response.ok) {
+        const data = await response.json();
+
+        if (data.success) {
           form.reset();
 
           const firstCard = document.querySelector('.loan-card[data-option="Option 1"]');
@@ -113,18 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
             thankYouModal.classList.remove("hidden");
           }
         } else {
-          let message = "There was a problem submitting your application. Please try again.";
-          try {
-            const data = await response.json();
-            if (data && Array.isArray(data.errors) && data.errors.length) {
-              message = data.errors
-                .map((err) => err.message || `${err.field} is invalid`)
-                .join(" ");
-            }
-          } catch (parseError) {
-            // response body wasn't JSON; fall back to the generic message
-          }
-          alert(message);
+          alert(
+            data.error ||
+              "There was a problem submitting your application. Please try again."
+          );
         }
       } catch (error) {
         console.error("Submission failed:", error);
