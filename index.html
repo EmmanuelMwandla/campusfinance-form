@@ -25,12 +25,26 @@
     </div>
   </div>
 
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand">
+        <img src="logo.PNG" alt="Campus Finance" class="logo header-logo" />
+        <span class="brand-name">Campus Finance</span>
+      </div>
+
+      <div class="trust-badge">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        </svg>
+        NCR Accredited
+      </div>
+    </div>
+  </header>
+
   <main class="single-page-layout">
 
     <section class="apply-left">
       <div class="summary-box">
-        <img src="logo.PNG" alt="Campus Finance" class="logo summary-logo" />
-
         <p class="eyebrow">SELECTED OFFER</p>
 
         <div class="offer-summary-text">
@@ -51,6 +65,9 @@
           data-total="650"
           data-months="1"
         >
+          <svg class="icon check-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" />
+          </svg>
           <span>Option 1</span>
           <strong>R500</strong>
           <small>Repay R650</small>
@@ -64,6 +81,9 @@
           data-total="1300"
           data-months="1"
         >
+          <svg class="icon check-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" />
+          </svg>
           <span>Option 2</span>
           <strong>R1000</strong>
           <small>Repay R1300</small>
@@ -74,7 +94,6 @@
     <section class="apply-right">
       <div class="form-panel">
         <div class="form-top">
-          <img src="logo.PNG" alt="Campus Finance" class="logo form-logo" />
           <h2>Apply</h2>
         </div>
 
@@ -112,27 +131,27 @@
           <div class="field-grid">
             <div class="field">
               <label for="fullname">Full name</label>
-              <input type="text" id="fullname" name="full_name" required />
+              <input type="text" id="fullname" name="full_name" autocomplete="name" required />
             </div>
 
             <div class="field">
               <label for="studentnumber">ID number</label>
-              <input type="text" id="studentnumber" name="id_number" required />
+              <input type="text" id="studentnumber" name="id_number" inputmode="numeric" autocomplete="off" required />
             </div>
 
             <div class="field">
               <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" required />
+              <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" required />
             </div>
 
             <div class="field">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
+              <input type="email" id="email" name="email" autocomplete="email" required />
             </div>
 
             <div class="field field-full">
               <label for="reason">Reason</label>
-              <textarea id="reason" name="reason" rows="5" required></textarea>
+              <textarea id="reason" name="reason" rows="2" required></textarea>
             </div>
 
             <div class="field field-full">
@@ -185,31 +204,36 @@
 
   <footer class="site-footer">
     <div class="footer-content">
-      <div class="footer-contact">
-        <h3>Contact Campus Finance</h3>
+      <div class="footer-row">
+        <div class="footer-contact">
+          <span class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            Email:
+            <a href="mailto:info@campusfinance.co.za">info@campusfinance.co.za</a>
+          </span>
 
-        <p class="contact-item">
-          Email:
-          <a href="mailto:info@campusfinance.co.za">
-            info@campusfinance.co.za
-          </a>
-        </p>
+          <span class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M4.804 21.644A6.707 6.707 0 006 21.75a6.721 6.721 0 003.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 01-.814 1.686.75.75 0 00.44 1.223zM8.25 10.875a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM10.875 12a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875-1.125a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25z" />
+            </svg>
+            WhatsApp:
+            <a href="https://wa.me/27750311105" target="_blank" rel="noopener noreferrer">+27 75 031 1105</a>
+          </span>
+        </div>
 
-        <p class="contact-item">
-          WhatsApp enquiries:
-          <a href="https://wa.me/27750311105" target="_blank" rel="noopener noreferrer">
-            +27 75 031 1105
-          </a>
-        </p>
-
-        <p class="contact-note">
-          For general enquiries only. Loan applications must be submitted through the application form on this website.
-        </p>
-
-        <p class="contact-note ncr-note">
-          Campus Finance is an NCR accredited credit provider. NCR Registration Number: NCRCP23984
-        </p>
+        <span class="ncr-note">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+          </svg>
+          NCR accredited credit provider · Reg: NCRCP23984
+        </span>
       </div>
+
+      <p class="contact-note">
+        General enquiries only, for applications apply via the form above.
+      </p>
     </div>
   </footer>
 
@@ -219,6 +243,9 @@
     target="_blank"
     rel="noopener noreferrer"
   >
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M4.804 21.644A6.707 6.707 0 006 21.75a6.721 6.721 0 003.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 01-.814 1.686.75.75 0 00.44 1.223zM8.25 10.875a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM10.875 12a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875-1.125a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25z" />
+    </svg>
     Chat on WhatsApp
   </a>
 
