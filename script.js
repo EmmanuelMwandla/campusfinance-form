@@ -14,8 +14,112 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeThankYou = document.getElementById("closeThankYou");
   const form = document.getElementById("loanForm");
 
+  const idUploadInput = document.getElementById("idUpload");
+  const bankStatementInput = document.getElementById("bankStatement");
+  const uploadProgress = document.getElementById("uploadProgress");
+  const uploadProgressBar = document.getElementById("uploadProgressBar");
+  const uploadProgressLabel = document.getElementById("uploadProgressLabel");
+
+  const COMPRESS_SKIP_BELOW_BYTES = 400 * 1024;
+  const COMPRESS_MAX_DIMENSION = 1600;
+  const COMPRESS_QUALITY = 0.8;
+
   function formatRand(value) {
     return "R" + Number(value).toLocaleString("en-ZA");
+  }
+
+  function setUploadProgress(percent, label) {
+    if (uploadProgressBar) {
+      uploadProgressBar.style.width = `${percent}%`;
+    }
+
+    if (uploadProgress) {
+      uploadProgress.setAttribute("aria-valuenow", String(percent));
+    }
+
+    if (uploadProgressLabel) {
+      uploadProgressLabel.textContent = label || "";
+    }
+  }
+
+  function compressImageFile(file) {
+    return new Promise((resolve) => {
+      if (!file || !file.type.startsWith("image/") || file.size <= COMPRESS_SKIP_BELOW_BYTES) {
+        resolve(file);
+        return;
+      }
+
+      const objectUrl = URL.createObjectURL(file);
+      const img = new Image();
+
+      img.onload = () => {
+        let { width, height } = img;
+
+        if (width > COMPRESS_MAX_DIMENSION || height > COMPRESS_MAX_DIMENSION) {
+          if (width > height) {
+            height = Math.round((height * COMPRESS_MAX_DIMENSION) / width);
+            width = COMPRESS_MAX_DIMENSION;
+          } else {
+            width = Math.round((width * COMPRESS_MAX_DIMENSION) / height);
+            height = COMPRESS_MAX_DIMENSION;
+          }
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(img, 0, 0, width, height);
+
+        canvas.toBlob(
+          (blob) => {
+            URL.revokeObjectURL(objectUrl);
+
+            if (!blob || blob.size >= file.size) {
+              resolve(file);
+              return;
+            }
+
+            const compressedName = file.name.replace(/\.[^/.]+$/, "") + ".jpg";
+            resolve(new File([blob], compressedName, { type: "image/jpeg" }));
+          },
+          "image/jpeg",
+          COMPRESS_QUALITY
+        );
+      };
+
+      img.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        resolve(file);
+      };
+
+      img.src = objectUrl;
+    });
+  }
+
+  function submitWithProgress(url, formData, onProgress) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", url);
+      xhr.setRequestHeader("Accept", "application/json");
+
+      xhr.upload.addEventListener("progress", (event) => {
+        if (event.lengthComputable && onProgress) {
+          onProgress(Math.round((event.loaded / event.total) * 100));
+        }
+      });
+
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve();
+        } else {
+          reject(new Error(`Request failed with status ${xhr.status}`));
+        }
+      };
+
+      xhr.onerror = () => reject(new Error("Network error"));
+
+      xhr.send(formData);
+    });
   }
 
   function updateLoan(card) {
@@ -73,33 +177,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = "Submitting...";
+        submitButton.textContent = "Preparing files...";
       }
 
-      const formData = new FormData(form);
+      if (uploadProgress) {
+        uploadProgress.classList.remove("hidden");
+      }
+      setUploadProgress(0, "Preparing files...");
 
       try {
-        const response = await fetch("https://formspree.io/f/xqeylaoy", {
-          method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json",
-          },
+        const [compressedId, compressedBank] = await Promise.all([
+          compressImageFile(idUploadInput.files[0]),
+          compressImageFile(bankStatementInput.files[0]),
+        ]);
+
+        const formData = new FormData(form);
+        formData.delete("id_copy");
+        formData.append("id_copy", compressedId, compressedId.name);
+        formData.delete("bank_statement");
+        formData.append("bank_statement", compressedBank, compressedBank.name);
+
+        if (submitButton) {
+          submitButton.textContent = "Submitting...";
+        }
+        setUploadProgress(0, "Uploading... 0%");
+
+        await submitWithProgress("https://formspree.io/f/xqeylaoy", formData, (percent) => {
+          setUploadProgress(percent, `Uploading... ${percent}%`);
         });
 
-        if (response.ok) {
-          form.reset();
+        form.reset();
 
-          const firstCard = document.querySelector('.loan-card[data-option="Option 1"]');
-          if (firstCard) {
-            updateLoan(firstCard);
-          }
+        const firstCard = document.querySelector('.loan-card[data-option="Option 1"]');
+        if (firstCard) {
+          updateLoan(firstCard);
+        }
 
-          if (thankYouModal) {
-            thankYouModal.classList.remove("hidden");
-          }
-        } else {
-          alert("There was a problem submitting your application. Please try again.");
+        if (thankYouModal) {
+          thankYouModal.classList.remove("hidden");
         }
       } catch (error) {
         console.error("Submission failed:", error);
@@ -109,6 +224,10 @@ document.addEventListener("DOMContentLoaded", () => {
           submitButton.disabled = false;
           submitButton.textContent = originalText;
         }
+        if (uploadProgress) {
+          uploadProgress.classList.add("hidden");
+        }
+        setUploadProgress(0, "");
       }
     });
   }
