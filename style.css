@@ -272,6 +272,16 @@ a {
   line-height: 1.7;
 }
 
+.ncr-note {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f4c81;
+  letter-spacing: 0.2px;
+}
+
 /* WHATSAPP BUTTON */
 
 .whatsapp-chat-btn {
