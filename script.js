@@ -21,16 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeThankYou = document.getElementById("closeThankYou");
   const form = document.getElementById("loanForm");
 
-  const studentNumberInput = document.getElementById("studentnumber");
-  const studentNumberHint = document.getElementById("studentNumberHint");
-  if (studentNumberInput) {
-    studentNumberInput.addEventListener("input", () => {
-      studentNumberInput.value = studentNumberInput.value.replace(/\D/g, "").slice(0, 13);
+  const idNumberInput = document.getElementById("idNumber");
+  const idNumberHint = document.getElementById("idNumberHint");
+  if (idNumberInput) {
+    idNumberInput.addEventListener("input", () => {
+      idNumberInput.value = idNumberInput.value.replace(/\D/g, "").slice(0, 13);
 
-      if (studentNumberHint) {
-        const count = studentNumberInput.value.length;
-        studentNumberHint.textContent = `${count}/13 digits`;
-        studentNumberHint.classList.toggle("is-complete", count === 13);
+      if (idNumberHint) {
+        const count = idNumberInput.value.length;
+        idNumberHint.textContent = `${count}/13 digits`;
+        idNumberHint.classList.toggle("is-complete", count === 13);
       }
     });
   }
