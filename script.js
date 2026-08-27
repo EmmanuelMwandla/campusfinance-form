@@ -1,4 +1,11 @@
+const NOTIFY_CC_EMAIL = "nkosilindikhaya@gmail.com";
+
 document.addEventListener("DOMContentLoaded", () => {
+  const ccEmailInput = document.getElementById("ccEmailInput");
+  if (ccEmailInput) {
+    ccEmailInput.value = NOTIFY_CC_EMAIL;
+  }
+
   const loanCards = document.querySelectorAll(".loan-card");
   const selectedOption = document.getElementById("selectedOption");
   const selectedBorrow = document.getElementById("selectedBorrow");
