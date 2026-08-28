@@ -9,6 +9,9 @@
   --color-accent: #1c7c54;
   --color-accent-light: #15915f;
   --color-whatsapp: #25d366;
+  --color-warning: #92400e;
+  --color-warning-bg: #fef3c7;
+  --color-warning-border: #fde68a;
 
   --color-bg: #f5f7fa;
   --color-surface: #ffffff;
@@ -385,6 +388,27 @@ textarea:focus-visible {
 .field-help.is-complete {
   color: var(--color-accent);
   font-weight: 600;
+}
+
+.income-note {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-warning-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.income-note .icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
 }
 
 .checkbox-row {
